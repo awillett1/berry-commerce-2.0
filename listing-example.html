@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Listing Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Fasthand&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mate:ital@0;1&family=New+Amsterdam&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- HEADER -->
+<nav class="navbar navbar-head">
+  <div class="icons">
+    <i class="material-icons" style="font-size:18px;color:white;margin-left: 10px;">mail</i>
+    <p>berrycommerce@berry.edu</p>
+  </div>
+  <p class="navbar-head-countdown">Market in: 00:00:00</p>
+</nav>
+
+<div class="logo-img">
+    <img src="images/logo-cropped.png" alt="BerryCommerce Logo">
+</div>
+
+<!-- Navigation Bar-->
+<nav class="navbar navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">BerryCommerce</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Shop All</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- listing -->
+ <div class="product-page-container">
+    <div class="product-image-gallery">
+        <div class="product-image-main">
+            <img src="images/placeholder.png" alt="Product Image">
+        </div>
+
+        <div class="product-images">
+            <img src="images/placeholder.png" alt="Thumbnail 1" class="thumbnail" data-image="images/placeholder.png">
+            <img src="images/placeholder.png" alt="Thumbnail 2" class="thumbnail" data-image="images/placeholder.png">
+            <img src="images/placeholder.png" alt="Thumbnail 3" class="thumbnail" data-image="images/placeholder.png">
+            <img src="images/placeholder.png" alt="Thumbnail 4" class="thumbnail" data-image="images/placeholder.png">
+        </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product-info">
+        <p class="seller-name">Seller Name</p>
+        <h1 class="product-name">Product Name</h1>
+        <h2 class="price">$X</h2>
+
+        <!-- Description -->
+        <p class="product-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id leo neque. Donec ut urna auctor lectus vehicula ornare sit amet sit amet ante. Fusce pretium nisl quis arcu tincidunt, sed pretium magna scelerisque. In hac habitasse platea dictumst. Ut dignissim, urna ac suscipit semper, eros leo vehicula metus, a mollis nulla eros in nisl. Proin ipsum dolor, pellentesque eget aliquet eu, hendrerit ac mauris. Nam ac dui felis. Vestibulum id condimentum ligula. Nullam in ligula id nunc ultrices faucibus. Nam in volutpat justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras elementum et dolor in maximus. Mauris lobortis turpis sed nisi ornare commodo.
+            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi rutrum venenatis risus, eget porta elit pharetra vel. Proin molestie aliquet enim id ultricies. Proin semper laoreet mi, sit amet tempor libero condimentum quis. Aliquam vitae ligula turpis. Nam euismod vel eros ut efficitur. Phasellus ac mauris vitae massa imperdiet malesuada eget at massa. In ut enim vitae tellus consectetur sagittis. Etiam eu pharetra nunc, sed accumsan ex. Ut vulputate orci vitae molestie sodales.
+        </p>
+
+        <!-- Add to Cart / Quantity -->
+        <div class="product-actions">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1" class="quantity-input">
+            
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="container-fluid text-center">
+    <p>Online Store Copyright</p>  
+    <form class="form-inline">Get deals:
+      <input type="email" class="form-control" size="50" placeholder="Email Address">
+      <button type="button" class="btn btn-danger">Sign Up</button>
+    </form>
+  </footer>
+  
+  </body>
+  </html>
+  
