@@ -4,48 +4,65 @@
   <title>Listing Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="author" href="humans.txt" />
+  <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- CSS + ICONS -->
+  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+  <script src="https://kit.fontawesome.com/986fc10363.js" crossorigin="anonymous"></script>
   <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bowlby+One+SC&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mate:ital@0;1&family=New+Amsterdam&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Staatliches&family=Yellowtail&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Fasthand&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mate:ital@0;1&family=New+Amsterdam&display=swap" rel="stylesheet">
-
+   <!-- CSS ANIMATIONS-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
 
 <!-- HEADER -->
-<nav class="navbar navbar-head">
-  <div class="icons">
-    <i class="material-icons" style="font-size:18px;color:white;margin-left: 10px;">mail</i>
-    <p>berrycommerce@berry.edu</p>
+  <div class="navbar navbar-head">
+      <div class="icons">
+        <i class="material-icons" style="font-size:18px;color:white;margin-left: 10px;">mail</i>
+        <p><a href="mailto:berrycommerce@berry.edu">berrycommerce@berry.edu</a></p>
+      </div>
+      <p class="navbar-head-countdown">Market in: <span id="countdown">00:00:00</span></p>
   </div>
-  <p class="navbar-head-countdown">Market in: 00:00:00</p>
-</nav>
-
-<div class="logo-img">
-    <img src="images/logo-cropped.png" alt="BerryCommerce Logo">
-</div>
-
-<!-- Navigation Bar-->
-<nav class="navbar navbar-custom">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.html">BerryCommerce</a>
+  
+  <!-- Navigation Bar-->
+  <nav class="navbar navbar-custom">
+    <div class="container-fluid">
+      <!-- Left Side (Links) -->
+      <div class="navbar-left">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="products.html">SHOP ALL</a></li>
+          <li><a href="contact.html">CONTACT US</a></li>
+        </ul>
+      </div>
+  
+      <!-- Logo Section (Centered) -->
+      <div class="navbar-logo">
+        <img src="images/thirdtime.png" alt="Logo" class="logo-img">
+      </div>
+  
+      <!-- Right Side (Icon Links) -->
+      <div class="navbar-right">
+        <div class="navbar-icons">
+          <a href="login.html" aria-label="Account or Login Page">
+              <i class="fa-solid fa-user fa-2xl" style="color: #2f2f5a;"></i>
+          </a>
+          <a href="cart.html" aria-label="Shopping Cart">
+              <i class="fa-solid fa-cart-shopping fa-2xl" style="color: #2f2f5a;"></i>
+          </a>
+          </div>
+      </div>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="products.html">Shop All</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </div>
-</nav>
+  </nav>
 
 <!-- listing -->
  <div class="product-page-container">
@@ -64,34 +81,48 @@
 
     <!-- Info -->
     <div class="product-info">
-        <p class="seller-name">Seller Name</p>
-        <h1 class="product-name">Product Name</h1>
-        <h2 class="price">$X</h2>
+        <p class="seller-name animate__animated animate__slideInDown">Seller Name</p>
+        <h1 class="product-name animate__animated animate__slideInDown">Product Name</h1>
+        <h2 class="price animate__animated animate__slideInDown">$X</h2>
 
         <!-- Description -->
-        <p class="product-description">
+        <p class="product-description animate__animated animate__fadeIn"">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id leo neque. Donec ut urna auctor lectus vehicula ornare sit amet sit amet ante. Fusce pretium nisl quis arcu tincidunt, sed pretium magna scelerisque. In hac habitasse platea dictumst. Ut dignissim, urna ac suscipit semper, eros leo vehicula metus, a mollis nulla eros in nisl. Proin ipsum dolor, pellentesque eget aliquet eu, hendrerit ac mauris. Nam ac dui felis. Vestibulum id condimentum ligula. Nullam in ligula id nunc ultrices faucibus. Nam in volutpat justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras elementum et dolor in maximus. Mauris lobortis turpis sed nisi ornare commodo.
             Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi rutrum venenatis risus, eget porta elit pharetra vel. Proin molestie aliquet enim id ultricies. Proin semper laoreet mi, sit amet tempor libero condimentum quis. Aliquam vitae ligula turpis. Nam euismod vel eros ut efficitur. Phasellus ac mauris vitae massa imperdiet malesuada eget at massa. In ut enim vitae tellus consectetur sagittis. Etiam eu pharetra nunc, sed accumsan ex. Ut vulputate orci vitae molestie sodales.
         </p>
 
         <!-- Add to Cart / Quantity -->
-        <div class="product-actions">
+        <div class="product-actions animate__animated animate__fadeIn"">
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" min="1" value="1" class="quantity-input">
             
-            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="add-to-cart-btn animate__animated animate__fadeIn"">Add to Cart</button>
         </div>
     </div>
 </div>
 
 <!-- FOOTER -->
 <footer class="container-fluid text-center">
-    <p>Online Store Copyright</p>  
-    <form class="form-inline">Get deals:
-      <input type="email" class="form-control" size="50" placeholder="Email Address">
-      <button type="button" class="btn btn-danger">Sign Up</button>
-    </form>
-  </footer>
+  <div class="footer-content">
+      <p class="footer-text">© 2025 BerryCommerce. All rights reserved.</p>
+      <div class="footer-social">
+          <p>Follow us:</p>
+          <div class="social-icons">
+              <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+              </a>
+              <a href="mailto:berrycommerce@berry.edu" target="_blank" aria-label="Email">
+                <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
+              </a>
+          </div>
+      </div>
+      <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a> |
+          <a href="tos.html">Terms of Service</a> |
+          <a href="contact.html">Contact Us</a>
+      </div>
+  </div>
+</footer>
   
   </body>
   </html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Account</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="author" href="humans.txt" />
+  <!-- BOOTSTRAP -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- CSS + ICONS -->
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/986fc10363.js" crossorigin="anonymous"></script>
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bowlby+One+SC&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mate:ital@0;1&family=New+Amsterdam&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Staatliches&family=Yellowtail&display=swap" rel="stylesheet">
+
+   <!-- CSS ANIMATIONS-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+
+<!-- HEADER -->
+  <div class="navbar navbar-head">
+      <div class="icons">
+        <i class="material-icons" style="font-size:18px;color:white;margin-left: 10px;">mail</i>
+        <p><a href="mailto:berrycommerce@berry.edu">berrycommerce@berry.edu</a></p>
+      </div>
+      <p class="navbar-head-countdown">Market in: <span id="countdown">00:00:00</span></p>
+  </div>
+  
+  <!-- Navigation Bar-->
+  <nav class="navbar navbar-custom">
+    <div class="container-fluid">
+      <!-- Left Side (Links) -->
+      <div class="navbar-left">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="products.html">SHOP ALL</a></li>
+          <li><a href="contact.html">CONTACT US</a></li>
+        </ul>
+      </div>
+  
+      <!-- Logo Section (Centered) -->
+      <div class="navbar-logo">
+        <img src="images/thirdtime.png" alt="Logo" class="logo-img">
+      </div>
+  
+      <!-- Right Side (Icon Links) -->
+      <div class="navbar-right">
+        <div class="navbar-icons">
+          <a href="login.html" aria-label="Account or Login Page">
+              <i class="fa-solid fa-user fa-2xl" style="color: #2f2f5a;"></i>
+          </a>
+          <a href="cart.html" aria-label="Shopping Cart">
+              <i class="fa-solid fa-cart-shopping fa-2xl" style="color: #2f2f5a;"></i>
+          </a>
+          </div>
+      </div>
+    </div>
+  </nav>
+ <!-- BODY -->
+<div class="account-settings">
+    <div class="settings-container">
+        <h1 class="settings-title animate__animated animate__fadeIn">Account Settings</h1>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#account-settings" data-toggle="tab">Account Settings</a></li>
+            <li><a href="#my-orders" data-toggle="tab">My Orders</a></li>
+            <li><a href="#become-seller" data-toggle="tab">Become a Seller</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- Account Settings Tab -->
+            <div id="account-settings" class="tab-pane fade in active">
+                <form class="settings-form animate__animated animate__fadeIn">
+                    <!-- Email Update -->
+                    <div class="settings-group">
+                        <label for="email" class="settings-label">New Email Address</label>
+                        <input type="email" id="email" name="email" class="settings-input" placeholder="Enter new email">
+                    </div>
+
+                    <!-- Password Update -->
+                    <div class="settings-group">
+                        <label for="current-pass" class="settings-label">Current Password</label>
+                        <input type="password" id="current-pass" name="current-pass" class="settings-input" placeholder="Enter current password">
+                    </div>
+                    
+                    <div class="settings-group">
+                        <label for="new-pass" class="settings-label">New Password</label>
+                        <input type="password" id="new-pass" name="new-pass" class="settings-input" placeholder="Enter new password">
+                    </div>
+
+                    <div class="settings-group">
+                        <label for="confirm-pass" class="settings-label">Confirm New Password</label>
+                        <input type="password" id="confirm-pass" name="confirm-pass" class="settings-input" placeholder="Confirm new password">
+                    </div>
+
+                    <button type="submit" class="save-changes-btn">Save Changes</button>
+                    <button class="logout-btn">Logout</button>
+                </form>
+            </div>
+
+            <!-- My Orders Tab -->
+            <div id="my-orders" class="tab-pane fade">
+                <h2 class="orders-title animate__animated animate__fadeIn">Your Orders</h2>
+                
+                <table class="table table-striped animate__animated animate__fadeIn">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Sample Order 1 -->
+                        <tr>
+                            <td>#12345</td>
+                            <td>Product A</td>
+                            <td>1</td>
+                            <td>$49.99</td>
+                            <td><span class="label label-warning">Ordered</span></td>
+                        </tr>
+                        
+                        <!-- Sample Order 2 -->
+                        <tr>
+                            <td>#12346</td>
+                            <td>Product B</td>
+                            <td>2</td>
+                            <td>$89.98</td>
+                            <td><span class="label label-success">Ready for pickup!</span></td>
+                        </tr>
+                        
+                        <!-- More Orders can be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Become a Seller Tab -->
+            <div id="become-seller" class="tab-pane fade">
+                <h2 class="seller-title-set animate__animated animate__fadeIn">Become a Seller</h2>
+                <p class="seller-text animate__animated animate__fadeIn">Want to start selling on our platform? Fill out the form below to apply.</p>
+
+                <!-- SELLER APPLICATION FORM SECTION -->
+                <div id="seller-form" class="seller-form-container animate__animated animate__fadeIn">
+                    <h2 class="form-title">Seller Application Form</h2>
+                    <form class="seller-application-form">
+                        <!-- Business Name -->
+                        <div class="settings-group">
+                            <label for="business-name" class="settings-label">Business Name</label>
+                            <input type="text" id="business-name" name="business-name" class="settings-input" placeholder="Enter your business name" required>
+                        </div>
+
+                        <!-- Business Email -->
+                        <div class="settings-group">
+                            <label for="business-email" class="settings-label">Business Email</label>
+                            <input type="email" id="business-email" name="business-email" class="settings-input" placeholder="Enter business email" required>
+                        </div>
+
+                        <!-- Business Description -->
+                        <div class="settings-group">
+                            <label for="business-description" class="settings-label">Business Description</label>
+                            <textarea id="business-description" name="business-description" class="settings-input" placeholder="Describe your business" required></textarea>
+                        </div>
+
+                        <!-- Why they want to join -->
+                        <div class="settings-group">
+                            <label for="why-join" class="settings-label">Why do you want to join our platform?</label>
+                            <textarea id="why-join" name="why-join" class="settings-input" placeholder="Tell us why you want to sell on our platform" required></textarea>
+                        </div>
+
+                        <!-- What Products to Sell -->
+                        <div class="settings-group">
+                            <label for="products-sell" class="settings-label">What products would you like to sell?</label>
+                            <textarea id="products-sell" name="products-sell" class="settings-input" placeholder="Describe the products you'll sell" required></textarea>
+                        </div>
+
+                        <!-- Role Selection -->
+                        <div class="settings-group">
+                            <label for="role" class="settings-label">Who are you?</label>
+                            <select id="role" name="role" class="settings-input" required>
+                                <option value="" disabled selected>Who are you?</option>
+                                <option value="student">Berry Student</option>
+                                <option value="alumni">Berry Alumni</option>
+                                <option value="fs">BerryFaculty/Staff</option>
+                                <option value="rome-community">Rome Community</option>
+                            </select>
+                        </div>
+
+                        <!-- Terms and Conditions Checkbox -->
+                        <div class="settings-group">
+                            <label class="settings-label">
+                                <input type="checkbox" id="terms-conditions" name="terms-conditions" required>
+                                I understand that all items purchased on this site will be preordered and handled through Stripe.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="save-changes-btn">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- FOOTER -->
+<footer class="container-fluid text-center">
+  <div class="footer-content">
+      <p class="footer-text">© 2025 BerryCommerce. All rights reserved.</p>
+      <div class="footer-social">
+          <p>Follow us:</p>
+          <div class="social-icons">
+              <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+              </a>
+              <a href="mailto:berrycommerce@berry.edu" target="_blank" aria-label="Email">
+                <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
+              </a>
+          </div>
+      </div>
+      <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a> |
+          <a href="tos.html">Terms of Service</a> |
+          <a href="contact.html">Contact Us</a>
+      </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

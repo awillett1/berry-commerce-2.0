@@ -1,0 +1,45 @@
+
+                            
+/* TEAM */       
+Your title: Amelie Willett            
+Site: amelie.willett@gmail.com
+Location: Atlanta, GA
+
+                         
+                 
+                        [...]
+						
+
+							
+/* THANKS */
+
+#index.html
+Photo by Christiann Koepke
+https://unsplash.com/photos/person-browsing-on-white-monitor-WiE01mC9AtY
+Photo by <a href="https://unsplash.com/@christiannkoepke?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Christiann Koepke</a> on <a href="https://unsplash.com/photos/person-browsing-on-white-monitor-WiE01mC9AtY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+							
+#contact.html
+Photo by Joel Holland
+https://unsplash.com/photos/aerial-photography-of-flowers-at-daytime-TRhGEGdw-YY
+<a href="https://unsplash.com/@joelholland?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Joel Holland</a> on <a href="https://unsplash.com/photos/aerial-photography-of-flowers-at-daytime-TRhGEGdw-YY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      
+#about.html
+Photo by Bailey Zindel
+https://unsplash.com/photos/body-of-water-surrounded-by-trees-NRQV-hBF10M
+Photo by <a href="https://unsplash.com/@baileyzindel?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Bailey Zindel</a> on <a href="https://unsplash.com/photos/body-of-water-surrounded-by-trees-NRQV-hBF10M?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+
+#create.html
+Photo by Joyce G on Unsplash
+https://unsplash.com/photos/the-sun-shines-through-the-trees-in-the-forest-2k74xaf8dfc
+Photo by <a href="https://unsplash.com/@joyce_?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Joyce G</a> on <a href="https://unsplash.com/photos/the-sun-shines-through-the-trees-in-the-forest-2k74xaf8dfc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      
+                 
+                        [...]
+                        
+
+                            
+/* SITE */
+
+                            
+Last update: 2025/21/01                     
+Standards: HTML5, CSS3, TBD

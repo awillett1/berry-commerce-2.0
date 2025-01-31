@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Account</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="author" href="humans.txt" />
+  <!-- BOOTSTRAP -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- CSS + ICONS -->
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/986fc10363.js" crossorigin="anonymous"></script>
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bowlby+One+SC&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mate:ital@0;1&family=New+Amsterdam&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Staatliches&family=Yellowtail&display=swap" rel="stylesheet">
+
+   <!-- CSS ANIMATIONS-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+
+<!-- HEADER -->
+  <div class="navbar navbar-head">
+      <div class="icons">
+        <i class="material-icons" style="font-size:18px;color:white;margin-left: 10px;">mail</i>
+        <p><a href="mailto:berrycommerce@berry.edu">berrycommerce@berry.edu</a></p>
+      </div>
+      <p class="navbar-head-countdown">Market in: <span id="countdown">00:00:00</span></p>
+  </div>
+  
+  <!-- Navigation Bar-->
+  <nav class="navbar navbar-custom">
+    <div class="container-fluid">
+      <!-- Left Side (Links) -->
+      <div class="navbar-left">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="products.html">SHOP ALL</a></li>
+          <li><a href="contact.html">CONTACT US</a></li>
+        </ul>
+      </div>
+  
+      <!-- Logo Section (Centered) -->
+      <div class="navbar-logo">
+        <img src="images/thirdtime.png" alt="Logo" class="logo-img">
+      </div>
+  
+      <!-- Right Side (Icon Links) -->
+      <div class="navbar-right">
+        <div class="navbar-icons">
+          <a href="login.html" aria-label="Account or Login Page">
+              <i class="fa-solid fa-user fa-2xl" style="color: #2f2f5a;"></i>
+          </a>
+          <a href="cart.html" aria-label="Shopping Cart">
+              <i class="fa-solid fa-cart-shopping fa-2xl" style="color: #2f2f5a;"></i>
+          </a>
+          </div>
+      </div>
+    </div>
+  </nav>
+    
+<!-- BODY -->
+<div class="container seller-settings">
+    <div class="seller-container">
+        <h1 class="seller-title-set approval-title animate__animated animate__fadeIn">Account Settings</h1>
+
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#account-settings" role="tab" data-toggle="tab">Account Settings</a></li>
+            <li><a href="#seller-profile" role="tab" data-toggle="tab">Seller Profile</a></li>
+            <li><a href="#product-management" role="tab" data-toggle="tab">Product Management</a></li>
+            <li><a href="#orders" role="tab" data-toggle="tab">Orders</a></li> <!-- New Tab for Orders -->
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+
+            <!-- Account Settings Tab -->
+            <div class="tab-pane active animate__animated animate__fadeIn" id="account-settings">
+                <form class="seller-form-set" method="post">
+                    <div class="seller-group-set">
+                        <label for="seller-email" class="seller-label-set">Email Address</label>
+                        <input type="email" id="seller-email" class="seller-input-set" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="seller-group-set">
+                        <label for="seller-password" class="seller-label-set">New Password</label>
+                        <input type="password" id="seller-password" class="seller-input-set" placeholder="Enter new password" required>
+                    </div>
+
+                    <div class="seller-group-set">
+                        <label for="confirm-password" class="seller-label-set">Confirm Password</label>
+                        <input type="password" id="confirm-password" class="seller-input-set" placeholder="Confirm new password" required>
+                    </div>
+
+                    <button type="submit" class="seller-save-btn">Save Changes</button>
+                    <button class="logout-btn">Logout</button>
+                </form>
+            </div>
+
+            <!-- Seller Profile Tab -->
+            <div class="tab-pane" id="seller-profile">
+                <h2 class="product-title-seller animate__animated animate__fadeIn">Update Your Seller Profile</h2>
+                <a href="seller-profile.html animate__animated animate__fadeIn" class="signup-link">Go to Seller Profile</a>
+
+                <form class="profile-form animate__animated animate__fadeIn" method="post">
+                    <!-- Business Name -->
+                    <div class="seller-group-set">
+                        <label for="business-name" class="seller-label-set">Business Name</label>
+                        <input type="text" id="business-name" class="seller-input-set" placeholder="Enter your business name" required>
+                    </div>
+
+                    <!-- Business Description -->
+                    <div class="seller-group-set">
+                        <label for="business-description" class="seller-label-set">Business Description</label>
+                        <textarea id="business-description" class="seller-input-set" placeholder="Enter a brief description of your business" required></textarea>
+                    </div>
+
+                    <!-- Logo -->
+                    <div class="seller-group-set">
+                        <label for="business-photo" class="seller-label-set">Business Photo</label>
+                        <input type="file" id="business-photo" class="seller-input-set" accept="image/*" required>
+                    </div>
+
+                    <button type="submit" class="seller-save-btn">Update Profile</button>
+                </form>
+            </div>
+
+            <!-- Product Management Tab -->
+            <div class="tab-pane" id="product-management">
+                <h2 class="product-title-seller animate__animated animate__fadeIn">Manage Your Products</h2>
+
+                <form class="product-form animate__animated animate__fadeIn" method="post">
+                    <!-- Product Name -->
+                    <div class="seller-group-set">
+                        <label for="product-name-seller" class="seller-label-set">Product Name</label>
+                        <input type="text" id="product-name-seller" class="seller-input-set" placeholder="Enter product name" required>
+                    </div>
+
+                    <!-- Product Description -->
+                    <div class="seller-group-set">
+                        <label for="product-description" class="seller-label-set">Product Description</label>
+                        <textarea id="product-description" class="seller-input-set" placeholder="Enter product description" required></textarea>
+                    </div>
+
+                    <!-- Product Price -->
+                    <div class="seller-group-set">
+                        <label for="product-price" class="seller-label-set">Product Price</label>
+                        <input type="number" id="product-price" class="seller-input-set" placeholder="Enter product price" required>
+                    </div>
+
+                    <!-- Product Image -->
+                    <div class="seller-group-set">
+                        <label for="product-image" class="seller-label-set">Product Image</label>
+                        <input type="file" id="product-image" class="seller-input-set" accept="image/*" multiple required>
+                    </div>
+
+                    <button type="submit" class="seller-save-btn">Add Product</button>
+                </form>
+
+                <h3>Existing Products</h3>
+                <table class="table animate__animated animate__fadeIn">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Product Row (Pending Approval) -->
+                        <tr>
+                            <td>Example Product</td>
+                            <td>This is an example product description.</td>
+                            <td>$19.99</td>
+                            <td class="status-pending">Waiting to be approved...</td>
+                            <td>
+                                <!-- Actions are disabled for products waiting for approval -->
+                                <button class="btn btn-warning" disabled>Edit</button>
+                                <button class="btn btn-danger" disabled>Delete</button>
+                            </td>
+                        </tr>
+
+                        <!-- Example Product Row (Approved) -->
+                        <tr>
+                            <td>Another Product</td>
+                            <td>This product is already approved and listed.</td>
+                            <td>$29.99</td>
+                            <td class="status-approved">Approved!</td>
+                            <td>
+                                <!-- Actions are enabled for approved products -->
+                                <button class="btn btn-warning">Edit</button>
+                                <button class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Orders Tab -->
+            <div class="tab-pane" id="orders">
+                <h2 class="product-title-seller animate__animated animate__fadeIn">Manage Your Orders</h2>
+
+                <table class="table animate__animated animate__fadeIn">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Order Row (Preparing) -->
+                        <tr>
+                            <td>#001</td>
+                            <td>John Doe</td>
+                            <td>Example Product</td>
+                            <td>1</td>
+                            <td>
+                                <select class="order-status" name="status" id="order-status-001">
+                                    <option value="preparing" selected>Preparing</option>
+                                    <option value="ready-for-pickup">Ready for Pickup</option>
+                                    <option value="delivered">Successfully Delivered</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn btn-info">Update Status</button>
+                            </td>
+                        </tr>
+
+                        <!-- Example Order Row (Ready for Pickup) -->
+                        <tr>
+                            <td>#002</td>
+                            <td>Jane Smith</td>
+                            <td>Another Product</td>
+                            <td>2</td>
+                            <td>
+                                <select class="order-status" name="status" id="order-status-002">
+                                    <option value="preparing">Preparing</option>
+                                    <option value="ready-for-pickup" selected>Ready for Pickup</option>
+                                    <option value="delivered">Successfully Delivered</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn btn-info">Update Status</button>
+                            </td>
+                        </tr>
+
+                        <!-- Example Order Row (Delivered) -->
+                        <tr>
+                            <td>#003</td>
+                            <td>Sam Johnson</td>
+                            <td>Sample Product</td>
+                            <td>3</td>
+                            <td>
+                                <select class="order-status" name="status" id="order-status-003">
+                                    <option value="preparing">Preparing</option>
+                                    <option value="ready-for-pickup">Ready for Pickup</option>
+                                    <option value="delivered" selected>Successfully Delivered</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn btn-info">Update Status</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="container-fluid text-center">
+  <div class="footer-content">
+      <p class="footer-text">© 2025 BerryCommerce. All rights reserved.</p>
+      <div class="footer-social">
+          <p>Follow us:</p>
+          <div class="social-icons">
+              <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+              </a>
+              <a href="mailto:berrycommerce@berry.edu" target="_blank" aria-label="Email">
+                <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
+              </a>
+          </div>
+      </div>
+      <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a> |
+          <a href="tos.html">Terms of Service</a> |
+          <a href="contact.html">Contact Us</a>
+      </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

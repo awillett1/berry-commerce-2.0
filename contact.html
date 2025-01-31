@@ -4,65 +4,113 @@
   <title>Contact Us</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="author" href="humans.txt" />
+  <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- CSS + ICONS -->
+  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=person" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-  
+  <script src="https://kit.fontawesome.com/986fc10363.js" crossorigin="anonymous"></script>
   <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bowlby+One+SC&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mate:ital@0;1&family=New+Amsterdam&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Staatliches&family=Yellowtail&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Fasthand&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mate:ital@0;1&family=New+Amsterdam&display=swap" rel="stylesheet">
+   <!-- CSS ANIMATIONS-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
 
 <!-- HEADER -->
-<nav class="navbar navbar-head">
-  <div class="icons">
-    <i class="material-icons" style="font-size:18px;color:white;margin-left: 10px;">mail</i>
-    <p>berrycommerce@berry.edu</p>
+  <div class="navbar navbar-head">
+      <div class="icons">
+        <i class="material-icons" style="font-size:18px;color:white;margin-left: 10px;">mail</i>
+        <p><a href="mailto:berrycommerce@berry.edu">berrycommerce@berry.edu</a></p>
+      </div>
+      <p class="navbar-head-countdown">Market in: <span id="countdown">00:00:00</span></p>
   </div>
-  <p class="navbar-head-countdown">Market in: 00:00:00</p>
-</nav>
-
-<div class="logo-img">
-    <img src="images/logo-cropped.png" alt="BerryCommerce Logo">
-</div>
-
-<!-- Navigation Bar-->
-<nav class="navbar navbar-custom">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.html">BerryCommerce</a>
+  
+  <!-- Navigation Bar-->
+  <nav class="navbar navbar-custom">
+    <div class="container-fluid">
+      <!-- Left Side (Links) -->
+      <div class="navbar-left">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="products.html">SHOP ALL</a></li>
+          <li><a href="contact.html">CONTACT US</a></li>
+        </ul>
+      </div>
+  
+      <!-- Logo Section (Centered) -->
+      <div class="navbar-logo">
+        <img src="images/thirdtime.png" alt="Logo" class="logo-img">
+      </div>
+  
+      <!-- Right Side (Icon Links) -->
+      <div class="navbar-right">
+        <div class="navbar-icons">
+          <a href="login.html" aria-label="Account or Login Page">
+              <i class="fa-solid fa-user fa-2xl" style="color: #2f2f5a;"></i>
+          </a>
+          <a href="cart.html" aria-label="Shopping Cart">
+              <i class="fa-solid fa-cart-shopping fa-2xl" style="color: #2f2f5a;"></i>
+          </a>
+          </div>
+      </div>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="products.html">Shop All</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-</nav>
-
+  </nav>
     
 <!-- BODY -->
 <div class="contact">
-    <h1>CONTACT US</h1>
-    <p>You may contact us using our email address, <a href="mailto:berrycommerce@berry.edu">berrycommerce@berry.edu</a> for any business inquiries</p>
+    <img class="page-photo" src="images/joel-holland.jpg" alt="Flowers by a Mountain">
+    <h1 class="animate__animated animate__fadeIn">CONTACT US</h1>
+    <p>You may also contact us using our email address, <a href="mailto:berrycommerce@berry.edu">berrycommerce@berry.edu</a> for any business inquiries.</p>
+    <div class="contact-form">
+      <form>
+        <label for="fn">First Name</label>
+        <input type="text" id="fn" name="fn" placeholder="John" required>
+
+        <label for="ln">Last Name</label>
+        <input type="text" id="ln" name="ln" placeholder="Doe">
+
+        <label for="email-contact">Email Address</label>
+        <input type="text" id="emailcontact" name="emailcontact" placeholder="example@email.com">
+
+        <label for="help">How can we help you?</label>
+        <textarea id="help" name="help" placeholder="..." style="height:200px"></textarea>
+        <button type="button" class="main-btn-large btn btn-lg"><a href="#">Submit</a></button>
+      </form>
+    </div>
 </div>
 
 
 <!-- FOOTER -->
 <footer class="container-fluid text-center">
-  <p>Online Store Copyright</p>  
-  <form class="form-inline">Get deals:
-    <input type="email" class="form-control" size="50" placeholder="Email Address">
-    <button type="button" class="btn btn-danger">Sign Up</button>
-  </form>
+  <div class="footer-content">
+      <p class="footer-text">© 2025 BerryCommerce. All rights reserved.</p>
+      <div class="footer-social">
+          <p>Follow us:</p>
+          <div class="social-icons">
+              <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+              </a>
+              <a href="mailto:berrycommerce@berry.edu" target="_blank" aria-label="Email">
+                <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
+              </a>
+          </div>
+      </div>
+      <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a> |
+          <a href="tos.html">Terms of Service</a> |
+          <a href="contact.html">Contact Us</a>
+      </div>
+  </div>
 </footer>
+
 
 </body>
 </html>
