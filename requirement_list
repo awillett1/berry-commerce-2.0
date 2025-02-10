@@ -1,0 +1,25 @@
+BerryCommerce
+
+Milestone 1:
+Account creation and login functionality. 
+Account panel features created. (Changing email and password, e.g.) 
+Differentiating between logged in users, sellers, and admins. 
+Prevent users from accessing seller-side information etc. (ex. Seller opening a listing can see an edit post button)
+
+Milestone 2:
+Creating a product as a seller. 
+Individual seller pages and ensure product is posted to main listings page and individual seller pages. 
+Ensure Admin can approve/deny requests.
+
+Milestone 3:
+Customer can make a preorder, which will send a notification to the seller.
+Payment API integration. 
+Further Admin improvements.
+
+Milestone 4:
+TBA
+maybe User Vensor direct message? Either use a message app API or create your own?
+
+Milestone 5:
+TBA
+User testing, have real vendors and users onboard
