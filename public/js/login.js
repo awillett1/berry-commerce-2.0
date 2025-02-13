@@ -26,7 +26,6 @@ async function handleLogin(event) {
 
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        // console.log('User logged in successfully:', userCredential.user); // Log the user object
         alert(`You have successfully logged in as ${userCredential.user.email}`);
 
         window.location.href = 'index.html';  
