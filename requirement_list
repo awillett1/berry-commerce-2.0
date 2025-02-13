@@ -1,7 +1,7 @@
 BerryCommerce
 
 Milestone 1:
-Account creation and login functionality. 
+(wokring on) Account creation and login functionality. 
 Account panel features created. (Changing email and password, e.g.) 
 Differentiating between logged in users, sellers, and admins. 
 Prevent users from accessing seller-side information etc. (ex. Seller opening a listing can see an edit post button)
