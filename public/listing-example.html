@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>About</title>
+  <title>Listing Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="author" href="humans.txt" />
@@ -53,9 +53,9 @@
       <!-- Right Side (Icon Links) -->
       <div class="navbar-right">
         <div class="navbar-icons">
-          <a href="login.html" aria-label="Account or Login Page">
-              <i class="fa-solid fa-user fa-2xl" style="color: #2f2f5a;"></i>
-          </a>
+          <a id="account-link" href="login.html" aria-label="Account or Login Page">
+            <i class="fa-solid fa-user fa-2xl" style="color: #2f2f5a;"></i>
+        </a>
           <a href="cart.html" aria-label="Shopping Cart">
               <i class="fa-solid fa-cart-shopping fa-2xl" style="color: #2f2f5a;"></i>
           </a>
@@ -64,29 +64,40 @@
     </div>
   </nav>
 
-    
-<!-- BODY -->
-<div class="about">
-    <img class="page-photo" src="images/bailey-zindel.jpg" alt="Mountain by a River">
-    <h1 class="animate__animated animate__fadeIn">ABOUT US</h1>
-      <p>BerryCommerce is a site designed for Berry students, alumni, faculty, and the greater Rome and Berry community to have a place to sell
-          and buy student-made products from the Mountain Day and Spring Markets.
-      </p>
-    
-      <h2>ABOUT THE CREATOR...</h2>
-      <div class="creator-section">
-        <div class="creator-content">
-          <img src="images/headshot.jpg" class="creator-image" alt="Amelie Willett">
-          <p>Hi, my name is Amelie Willett and I am a senior Computer Science major with a Creative Technologies minor.
-              I coded, designed, and built BerryCommerce from scratch for my senior capstone class.
-          </p>
+<!-- listing -->
+ <div class="product-page-container">
+    <div class="product-image-gallery">
+        <div class="product-image-main">
+            <img src="images/placeholder.png" alt="Product Image">
         </div>
-        <div class="social-icons-abt">
-          <a href="https://www.linkedin.com/in/amelie-willett/" target="_blank" aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-        </a>
+
+        <div class="product-images">
+            <img src="images/placeholder.png" alt="Thumbnail 1" class="thumbnail" data-image="images/placeholder.png">
+            <img src="images/placeholder.png" alt="Thumbnail 2" class="thumbnail" data-image="images/placeholder.png">
+            <img src="images/placeholder.png" alt="Thumbnail 3" class="thumbnail" data-image="images/placeholder.png">
+            <img src="images/placeholder.png" alt="Thumbnail 4" class="thumbnail" data-image="images/placeholder.png">
         </div>
-      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product-info">
+        <p class="seller-name animate__animated animate__slideInDown">Seller Name</p>
+        <h1 class="product-name animate__animated animate__slideInDown">Product Name</h1>
+        <h2 class="price animate__animated animate__slideInDown">$X</h2>
+
+        <!-- Description -->
+        <p class="product-description animate__animated animate__fadeIn"">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id leo neque. Donec ut urna auctor lectus vehicula ornare sit amet sit amet ante. Fusce pretium nisl quis arcu tincidunt, sed pretium magna scelerisque. In hac habitasse platea dictumst. Ut dignissim, urna ac suscipit semper, eros leo vehicula metus, a mollis nulla eros in nisl. Proin ipsum dolor, pellentesque eget aliquet eu, hendrerit ac mauris. Nam ac dui felis. Vestibulum id condimentum ligula. Nullam in ligula id nunc ultrices faucibus. Nam in volutpat justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras elementum et dolor in maximus. Mauris lobortis turpis sed nisi ornare commodo.
+            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi rutrum venenatis risus, eget porta elit pharetra vel. Proin molestie aliquet enim id ultricies. Proin semper laoreet mi, sit amet tempor libero condimentum quis. Aliquam vitae ligula turpis. Nam euismod vel eros ut efficitur. Phasellus ac mauris vitae massa imperdiet malesuada eget at massa. In ut enim vitae tellus consectetur sagittis. Etiam eu pharetra nunc, sed accumsan ex. Ut vulputate orci vitae molestie sodales.
+        </p>
+
+        <!-- Add to Cart / Quantity -->
+        <div class="product-actions animate__animated animate__fadeIn"">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1" class="quantity-input">
+            
+            <button class="add-to-cart-btn animate__animated animate__fadeIn"">Add to Cart</button>
+        </div>
     </div>
 </div>
 
@@ -112,7 +123,7 @@
       </div>
   </div>
 </footer>
-
-
-</body>
-</html>
+  
+  </body>
+  </html>
+  

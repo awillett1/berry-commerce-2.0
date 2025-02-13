@@ -17,9 +17,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bowlby+One+SC&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mate:ital@0;1&family=New+Amsterdam&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Staatliches&family=Yellowtail&display=swap" rel="stylesheet">
-
    <!-- CSS ANIMATIONS-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+   <!-- JAVASCRIPT -->
+   <script type="module" src="js/firebase.js"></script>
+   <script type="module" src="js/logout.js"></script>
+   <script type="module" src="js/authGuard.js"></script>
 </head>
 <body>
 
@@ -53,9 +56,9 @@
       <!-- Right Side (Icon Links) -->
       <div class="navbar-right">
         <div class="navbar-icons">
-          <a href="login.html" aria-label="Account or Login Page">
-              <i class="fa-solid fa-user fa-2xl" style="color: #2f2f5a;"></i>
-          </a>
+            <a id="account-link" href="login.html" aria-label="Account or Login Page">
+                <i class="fa-solid fa-user fa-2xl" style="color: #2f2f5a;"></i>
+            </a>
           <a href="cart.html" aria-label="Shopping Cart">
               <i class="fa-solid fa-cart-shopping fa-2xl" style="color: #2f2f5a;"></i>
           </a>
