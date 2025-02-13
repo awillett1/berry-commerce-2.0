@@ -1,6 +1,15 @@
 
 firebase.env
 js/firebase.js
+database.rules.json
+.firebaserc
+firebase.json
+firestore.indexes.json
+.firebase/hosting.cHVibGlj.cache
+firestore.rules
+public/js/firebase.js
+remoteconfig.template.json
+hmm/index.html
 .firebaserc
 database.rules.json
 firebase.json
