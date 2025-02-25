@@ -1,5 +1,10 @@
+// login.js
+// To be used with the login form on login.html
+// Handles forgetting password and logging into an account
+
 import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 
+// add listeners
 document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('login-form');
     const resetPasswordLink = document.getElementById('reset-password');
@@ -17,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// login form
 async function handleLogin(event) {
     event.preventDefault(); 
 
@@ -35,6 +41,7 @@ async function handleLogin(event) {
     }
 }
 
+// reset password email
 async function handlePasswordReset(event) {
     event.preventDefault();  
     

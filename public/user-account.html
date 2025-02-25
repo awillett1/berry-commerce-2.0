@@ -23,6 +23,8 @@
    <script type="module" src="js/firebase.js"></script>
    <script type="module" src="js/logout.js"></script>
    <script type="module" src="js/authGuard.js"></script>
+   <script type="module" src="js/sellerApplication.js"></script>
+   <script type="module" src="js/passwordReset.js"></script>
 </head>
 <body>
 
@@ -81,29 +83,10 @@
             <!-- Account Settings Tab -->
             <div id="account-settings" class="tab-pane fade in active">
                 <form class="settings-form animate__animated animate__fadeIn">
-                    <!-- Email Update -->
-                    <div class="settings-group">
-                        <label for="email" class="settings-label">New Email Address</label>
-                        <input type="email" id="email" name="email" class="settings-input" placeholder="Enter new email">
-                    </div>
-
                     <!-- Password Update -->
                     <div class="settings-group">
-                        <label for="current-pass" class="settings-label">Current Password</label>
-                        <input type="password" id="current-pass" name="current-pass" class="settings-input" placeholder="Enter current password">
+                        <button type="button" id="reset-password-button" class="main-btn-large">Change Password</button>
                     </div>
-                    
-                    <div class="settings-group">
-                        <label for="new-pass" class="settings-label">New Password</label>
-                        <input type="password" id="new-pass" name="new-pass" class="settings-input" placeholder="Enter new password">
-                    </div>
-
-                    <div class="settings-group">
-                        <label for="confirm-pass" class="settings-label">Confirm New Password</label>
-                        <input type="password" id="confirm-pass" name="confirm-pass" class="settings-input" placeholder="Confirm new password">
-                    </div>
-
-                    <button type="submit" class="save-changes-btn">Save Changes</button>
                     <button class="logout-btn" id="logout-button">Logout</button>
                 </form>
             </div>

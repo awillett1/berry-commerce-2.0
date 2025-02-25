@@ -23,6 +23,7 @@
    <script type="module" src="js/firebase.js"></script>
    <script type="module" src="js/logout.js"></script>
    <script type="module" src="js/authGuard.js"></script>
+   <script type="module" src="js/passwordReset.js"></script>
 </head>
 <body>
 
@@ -87,22 +88,9 @@
             <div class="tab-pane active animate__animated animate__fadeIn" id="account-settings">
                 <form class="seller-form-set" method="post">
                     <div class="seller-group-set">
-                        <label for="seller-email" class="seller-label-set">Email Address</label>
-                        <input type="email" id="seller-email" class="seller-input-set" placeholder="Enter your email" required>
+                        <button type="button" id="reset-password-button" class="main-btn-large">Change Password</button>
                     </div>
-
-                    <div class="seller-group-set">
-                        <label for="seller-password" class="seller-label-set">New Password</label>
-                        <input type="password" id="seller-password" class="seller-input-set" placeholder="Enter new password" required>
-                    </div>
-
-                    <div class="seller-group-set">
-                        <label for="confirm-password" class="seller-label-set">Confirm Password</label>
-                        <input type="password" id="confirm-password" class="seller-input-set" placeholder="Confirm new password" required>
-                    </div>
-
-                    <button type="submit" class="seller-save-btn">Save Changes</button>
-                    <button class="logout-btn">Logout</button>
+                    <button class="logout-btn" id="logout-button">Logout</button>
                 </form>
             </div>
 

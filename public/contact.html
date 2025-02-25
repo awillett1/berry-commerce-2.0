@@ -21,7 +21,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- JAVASCRIPT -->
     <script type="module" src="js/firebase.js"></script>
-    <script type="module" src="js/authGuard"></script>
+    <script type="module" src="js/authGuard.js"></script>
+    <script type="module" src="js/contact.js"></script>
 </head>
 <body>
 
@@ -71,20 +72,20 @@
     <img class="page-photo" src="images/joel-holland.jpg" alt="Flowers by a Mountain">
     <h1 class="animate__animated animate__fadeIn">CONTACT US</h1>
     <p>You may also contact us using our email address, <a href="mailto:berrycommerce@berry.edu">berrycommerce@berry.edu</a> for any business inquiries.</p>
-    <div class="contact-form">
-      <form>
+    <div class="contact-form-div">
+      <form class="contact-form" id="contact-form">
         <label for="fn">First Name</label>
-        <input type="text" id="fn" name="fn" placeholder="John" required>
+        <input type="text" id="fn" name="fn" placeholder="John">
 
         <label for="ln">Last Name</label>
         <input type="text" id="ln" name="ln" placeholder="Doe">
 
         <label for="email-contact">Email Address</label>
-        <input type="text" id="emailcontact" name="emailcontact" placeholder="example@email.com">
+        <input type="text" id="email-contact" name="email-contact" placeholder="example@email.com">
 
         <label for="help">How can we help you?</label>
         <textarea id="help" name="help" placeholder="..." style="height:200px"></textarea>
-        <button type="button" class="main-btn-large btn btn-lg"><a href="#">Submit</a></button>
+        <button type="submit" class="main-btn-large btn btn-lg">Submit</button>
       </form>
     </div>
 </div>

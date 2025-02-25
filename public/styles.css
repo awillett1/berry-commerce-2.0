@@ -2159,3 +2159,9 @@ footer {
     outline: none;
     background-color: #c9d2d8;
 }
+
+#reset-password-button {
+    display: block;
+    margin: 20px auto; 
+    text-align: center;
+}
