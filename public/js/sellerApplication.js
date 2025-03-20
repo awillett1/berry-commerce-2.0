@@ -1,7 +1,6 @@
 // sellerApplication.js
 // To be used with the "Become a Seller" form on user-account.html
 // Takes the submitted user's input and puts it in the Firebase Realtime Database
-// Import necessary Firebase functions
 
 import { getDatabase, ref, push, set } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
 
@@ -21,9 +20,9 @@ function submitApplication(e) {
     const whyJoin = getInputVal('why-join');
     const productsSell = getInputVal('products-sell');
     const role = getInputVal('role');
-    const termsAccepted = document.getElementById('terms-conditions').checked; // Checkbox value
+    const termsAccepted = document.getElementById('terms-conditions').checked; 
 
-    const timestamp = new Date().toISOString(); // Saves in ISO format (e.g., "2025-02-24T12:34:56.789Z")
+    const timestamp = new Date().toISOString(); 
 
     // save message
     saveApplication(businessName, businessEmail, businessDescription, whyJoin, productsSell, role, termsAccepted, timestamp);
@@ -48,7 +47,7 @@ function saveApplication(businessName, businessEmail, businessDescription, whyJo
         productsSell,
         role,
         termsAccepted,
-        timestamp // store timestampe
+        timestamp // store timestamp
     }).then(() => {
         alert('Application submitted successfully!');
     }).catch((error) => {

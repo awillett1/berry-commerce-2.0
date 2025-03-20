@@ -22,6 +22,8 @@
    <!-- JAVASCRIPT -->
    <script type="module" src="js/firebase.js"></script>
    <script type="module" src="js/logout.js"></script>
+   <script type="module" src="js/sellerPageForm.js"></script> <!-- for the update form -->
+   <script type="module" src="js/sellerPage.js"></script> <!-- for the seller page -->
    <script type="module" src="js/authGuard.js"></script>
    <script type="module" src="js/passwordReset.js"></script>
 </head>
@@ -99,26 +101,57 @@
                 <h2 class="product-title-seller animate__animated animate__fadeIn">Update Your Seller Profile</h2>
                 <a href="seller-profile.html animate__animated animate__fadeIn" class="signup-link">Go to Seller Profile</a>
 
-                <form class="profile-form animate__animated animate__fadeIn" method="post">
+                <form class="profile-form animate__animated animate__fadeIn" id="seller-page-form" method="post">
                     <!-- Business Name -->
                     <div class="seller-group-set">
                         <label for="business-name" class="seller-label-set">Business Name</label>
-                        <input type="text" id="business-name" class="seller-input-set" placeholder="Enter your business name" required>
+                        <input type="text" id="business-name" class="seller-input-set" placeholder="Enter your business name">
+                    </div>
+
+                    <!-- Business Email -->
+                    <div class="seller-group-set">
+                        <label for="business-email" class="seller-label-set">Contact Email</label>
+                        <input type="email" id="business-email" class="seller-input-set" placeholder="Enter your business contact email">
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div class="seller-group-set">
+                        <label for="business-social" class="seller-label-set">Social Media</label>
+                        <select name="business-social" id="business-social">
+                            <option value="instagram" id="instaOption">Instagram</option>
+                            <option value="facebook"  id="faceOption">Facebook</option>
+                        </select>
+
+                        <!-- want these to show up if facebook or instagram is selected so people can enter
+                             their social media handles                                                     -->
+                        <div id="ifInstagram" style="display: none;">
+                            <label for="instagramHandle">Instagram handle? eg. berrycommerce</label> 
+                            <p>Please do not put an "@" in the handle. Just do plaintext.</p>
+                            <input type="text" id="instagramHandle" name="instagramHandle" /><br />
+                            <button id="save-socials" class="seller-save-btn">Save</button>
+                        </div>
+
+                        <div id="ifFacebook" style="display: none;">
+                            <label for="facebookHandle">Facebook handle? berrycommerce</label> 
+                            <p>Please do not put an "@" in the handle. Just do plaintext.</p>
+                            <input type="text" id="facebookHandle" name="facebookHandle" /><br />
+                            <button id="save-socials" class="seller-save-btn">Save</button>
+                        </div>
                     </div>
 
                     <!-- Business Description -->
                     <div class="seller-group-set">
                         <label for="business-description" class="seller-label-set">Business Description</label>
-                        <textarea id="business-description" class="seller-input-set" placeholder="Enter a brief description of your business" required></textarea>
+                        <textarea id="business-description" class="seller-input-set" placeholder="Enter a brief description of your business"></textarea>
                     </div>
 
                     <!-- Logo -->
                     <div class="seller-group-set">
                         <label for="business-photo" class="seller-label-set">Business Photo</label>
-                        <input type="file" id="business-photo" class="seller-input-set" accept="image/*" required>
+                        <input type="file" id="business-photo" class="seller-input-set" accept="image/*">
                     </div>
-
-                    <button type="submit" class="seller-save-btn">Update Profile</button>
+                    
+                    <button type="submit" class="seller-save-btn" id="update-seller-page">Update Profile</button>
                 </form>
             </div>
 

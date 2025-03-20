@@ -2165,3 +2165,147 @@ footer {
     margin: 20px auto; 
     text-align: center;
 }
+
+/* SELLER PAGE */
+.seller-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* seller info */
+.seller-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.seller-logo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.seller-name {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Arvo", serif;
+    color: var(--berry-blue);
+    margin: 15px 0 5px;
+}
+
+.seller-contact {
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.seller-socials {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.seller-socials a {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f1f1;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.seller-socials a:hover {
+    background: #3498db;
+}
+
+.seller-our-products {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left !important;
+    width: 100%;
+    font-family: "Josefin Sans", serif;
+    color: var(--berry-blue);
+    margin: 15px 0 5px;
+}
+
+/* "OUR PRODUCTS" */
+.seller-products {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.seller-products h2 {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Arvo", serif;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* product gallery */ 
+.product-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 20px; 
+    justify-items: center;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Josefin Sans", sans-serif;
+    color: #222;
+    margin-top: 10px;
+}
+
+.product-price {
+    font-size: 14px;
+    color: #666;
+    font-family: "Josefin Sans", sans-serif;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .product-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    }
+
+    .product-image img {
+        height: 180px; 
+    }
+}
