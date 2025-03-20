@@ -1,17 +1,19 @@
 BerryCommerce
 
 Milestone 1:
-(wokring on) Account creation and login functionality. 
-Account panel features created. (Changing email and password, e.g.) 
-Differentiating between logged in users, sellers, and admins. 
-Prevent users from accessing seller-side information etc. (ex. Seller opening a listing can see an edit post button)
+(DONE) Account creation and login functionality. 
+(DONE) Account panel features created. (Changing email and password, e.g.) 
+(DONE) Differentiating between logged in users, sellers, and admins. 
+(DONE) Prevent users from accessing seller-side information etc. 
 
 Milestone 2:
-Creating a product as a seller. 
+(ex. Seller opening a listing can see an edit post button)
+(DOING) how to post forms, will relate to Creating a product as a seller. 
 Individual seller pages and ensure product is posted to main listings page and individual seller pages. 
 Ensure Admin can approve/deny requests.
 
 Milestone 3:
+(TODO) authentication is done using a javascript redirect, later will be replaced by server side code, so server does not serve pages that is not meant to be seen.
 Customer can make a preorder, which will send a notification to the seller.
 Payment API integration. 
 Further Admin improvements.
