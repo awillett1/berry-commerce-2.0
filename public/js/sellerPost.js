@@ -44,7 +44,7 @@ function updateSellerPage(businessName) {
             const sellerData = sellerSnapshot.val();
             const { businessEmail, businessDescription, instagram, facebook } = sellerData;
 
-            // Update seller info on page
+            // update seller info on page
             const sellerNameElement = document.getElementById('sellerP-name');
             const sellerEmailElement = document.getElementById('sellerP-email');
             const sellerDescriptionElement = document.getElementById('sellerP-description');
