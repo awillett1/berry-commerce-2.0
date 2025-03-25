@@ -2309,3 +2309,9 @@ footer {
         height: 180px; 
     }
 }
+
+#seller-link {
+    position: relative;
+    z-index: 10;
+    text-decoration: underline
+}

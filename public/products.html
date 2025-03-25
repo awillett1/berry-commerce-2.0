@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
   <!-- CSS + ICONS -->
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -22,6 +23,9 @@
    <!-- JAVASCRIPT -->
    <script type="module" src="js/firebase.js"></script>
    <script type="module" src="js/authGuard.js"></script>
+   <script type="module" src="js/productPost.js"></script> <!-- automatically populate listings -->
+   <script type="module" src="js/listingPost.js"></script> <!-- automatically populate listing pages -->
+   <!-- dynamically change-->
 </head>
 <body>
 
@@ -88,97 +92,8 @@
 </div>
 
 <!-- EXAMPLE PRODUCT LISTING-->
-<div class="product-listing-container animate__animated animate__fadeIn">
-    <div class="product-listing">
-        <a href="listing-example.html">
-            <img src="images/placeholder.png" alt="Placeholder Image">
-            <p class="seller-title-products">Seller Name</p>
-            <p class="product-title-products">Product Name</p>
-            <p class="price-tag-products">$X</p>
-        </a>
-    </div>
-
-    <div class="product-listing">
-        <a href="listing-example.html">
-            <img src="images/placeholder.png" alt="Placeholder Image">
-            <p class="seller-title-products">Seller Name</p>
-            <p class="product-title-products">Product Name</p>
-            <p class="price-tag-products">$X</p>
-        </a>
-    </div>
-
-    <div class="product-listing">
-        <a href="listing-example.html">
-            <img src="images/placeholder.png" alt="Placeholder Image">
-            <p class="seller-title-products">Seller Name</p>
-            <p class="product-title-products">Product Name</p>
-            <p class="price-tag-products">$X</p>
-        </a>
-    </div>
-
-    <div class="product-listing">
-        <a href="listing-example.html">
-            <img src="images/placeholder.png" alt="Placeholder Image">
-            <p class="seller-title-products">Seller Name</p>
-            <p class="product-title-products">Product Name</p>
-            <p class="price-tag-products">$X</p>
-        </a>
-    </div>
-
-    <div class="product-listing">
-        <a href="listing-example.html">
-            <img src="images/placeholder.png" alt="Placeholder Image">
-            <p class="seller-title-products">Seller Name</p>
-            <p class="product-title-products">Product Name</p>
-            <p class="price-tag-products">$X</p>
-        </a>
-    </div>
-
-    <div class="product-listing">
-        <a href="listing-example.html">
-            <img src="images/placeholder.png" alt="Placeholder Image">
-            <p class="seller-title-products">Seller Name</p>
-            <p class="product-title-products">Product Name</p>
-            <p class="price-tag-products">$X</p>
-        </a>
-    </div>
-
-    <div class="product-listing">
-        <a href="listing-example.html">
-            <img src="images/placeholder.png" alt="Placeholder Image">
-            <p class="seller-title-products">Seller Name</p>
-            <p class="product-title-products">Product Name</p>
-            <p class="price-tag-products">$X</p>
-        </a>
-    </div>
-
-    <div class="product-listing">
-        <a href="listing-example.html">
-            <img src="images/placeholder.png" alt="Placeholder Image">
-            <p class="seller-title-products">Seller Name</p>
-            <p class="product-title-products">Product Name</p>
-            <p class="price-tag-products">$X</p>
-        </a>
-    </div>
-
-    <div class="product-listing">
-        <a href="listing-example.html">
-            <img src="images/placeholder.png" alt="Placeholder Image">
-            <p class="seller-title-products">Seller Name</p>
-            <p class="product-title-products">Product Name</p>
-            <p class="price-tag-products">$X</p>
-        </a>
-    </div>
-
-    <div class="product-listing">
-        <a href="listing-example.html">
-            <img src="images/placeholder.png" alt="Placeholder Image">
-            <p class="seller-title-products">Seller Name</p>
-            <p class="product-title-products">Product Name</p>
-            <p class="price-tag-products">$X</p>
-        </a>
-    </div>
-    <!-- These will be automatically populated later...-->
+    <!-- These will be automatically populated...-->
+<div id="product-container" class="product-listing-container animate__animated animate__fadeIn">
 </div>
 
 

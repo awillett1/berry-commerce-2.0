@@ -26,6 +26,8 @@
    <script type="module" src="js/sellerPage.js"></script> <!-- for the seller page -->
    <script type="module" src="js/authGuard.js"></script>
    <script type="module" src="js/passwordReset.js"></script>
+   <script type="module" src="js/productForm.js"></script> <!-- for the product form -->    
+   <script type="module" src="js/sellerLink.js"></script> <!-- dynamically updates the seller page -->
 </head>
 <body>
 
@@ -99,7 +101,7 @@
             <!-- Seller Profile Tab -->
             <div class="tab-pane" id="seller-profile">
                 <h2 class="product-title-seller animate__animated animate__fadeIn">Update Your Seller Profile</h2>
-                <a href="seller-profile.html animate__animated animate__fadeIn" class="signup-link">Go to Seller Profile</a>
+                <a href="#" id="profile-link" class="signup-link animate__animated animate__fadeIn">Go to Seller Profile</a>
 
                 <form class="profile-form animate__animated animate__fadeIn" id="seller-page-form" method="post">
                     <!-- Business Name -->
@@ -114,30 +116,27 @@
                         <input type="email" id="business-email" class="seller-input-set" placeholder="Enter your business contact email">
                     </div>
                     
-                    <!-- Social Media -->
+                   <!-- Social Media -->
                     <div class="seller-group-set">
-                        <label for="business-social" class="seller-label-set">Social Media</label>
-                        <select name="business-social" id="business-social">
-                            <option value="instagram" id="instaOption">Instagram</option>
-                            <option value="facebook"  id="faceOption">Facebook</option>
+                    <label for="business-social" class="seller-label-set">Social Media</label>
+                    <select name="business-social" id="business-social">
+                        <option value="">Select a platform</option>
+                        <option value="instagram" id="instaOption">Instagram</option>
+                        <option value="facebook" id="faceOption">Facebook</option>
                         </select>
 
-                        <!-- want these to show up if facebook or instagram is selected so people can enter
-                             their social media handles                                                     -->
-                        <div id="ifInstagram" style="display: none;">
-                            <label for="instagramHandle">Instagram handle? eg. berrycommerce</label> 
-                            <p>Please do not put an "@" in the handle. Just do plaintext.</p>
-                            <input type="text" id="instagramHandle" name="instagramHandle" /><br />
-                            <button id="save-socials" class="seller-save-btn">Save</button>
-                        </div>
-
-                        <div id="ifFacebook" style="display: none;">
-                            <label for="facebookHandle">Facebook handle? berrycommerce</label> 
-                            <p>Please do not put an "@" in the handle. Just do plaintext.</p>
-                            <input type="text" id="facebookHandle" name="facebookHandle" /><br />
-                            <button id="save-socials" class="seller-save-btn">Save</button>
-                        </div>
+                    <div id="ifInstagram" style="display: none;">
+                        <label for="instagramHandle">Instagram handle? eg. berrycommerce</label>
+                        <p>Please do not put an "@" in the handle. Just do plaintext.</p>
+                        <input type="text" id="instagramHandle" name="instagramHandle" /><br />
                     </div>
+
+                    <div id="ifFacebook" style="display: none;">
+                        <label for="facebookHandle">Facebook handle? eg. berrycommerce</label>
+                        <p>Please do not put an "@" in the handle. Just do plaintext.</p>
+                        <input type="text" id="facebookHandle" name="facebookHandle" /><br />
+                    </div>
+                 </div>
 
                     <!-- Business Description -->
                     <div class="seller-group-set">
@@ -159,7 +158,7 @@
             <div class="tab-pane" id="product-management">
                 <h2 class="product-title-seller animate__animated animate__fadeIn">Manage Your Products</h2>
 
-                <form class="product-form animate__animated animate__fadeIn" method="post">
+                <form class="product-form animate__animated animate__fadeIn" method="post" id="seller-page-product-form">
                     <!-- Product Name -->
                     <div class="seller-group-set">
                         <label for="product-name-seller" class="seller-label-set">Product Name</label>
@@ -175,7 +174,7 @@
                     <!-- Product Price -->
                     <div class="seller-group-set">
                         <label for="product-price" class="seller-label-set">Product Price</label>
-                        <input type="number" id="product-price" class="seller-input-set" placeholder="Enter product price" required>
+                        <input type="text" id="product-price" class="seller-input-set" placeholder="Enter product price" required>
                     </div>
 
                     <!-- Product Image -->
@@ -287,7 +286,7 @@
                             <td>Sample Product</td>
                             <td>3</td>
                             <td>
-                                <select class="order-status" name="status" id="order-status-003">
+                                <select class="order-status"name="status" id="order-status-003">
                                     <option value="preparing">Preparing</option>
                                     <option value="ready-for-pickup">Ready for Pickup</option>
                                     <option value="delivered" selected>Successfully Delivered</option>

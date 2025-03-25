@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>About</title>
+  <title>Seller Page Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="author" href="humans.txt" />
@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
   <!-- CSS + ICONS -->
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -18,11 +17,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bowlby+One+SC&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mate:ital@0;1&family=New+Amsterdam&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Staatliches&family=Yellowtail&display=swap" rel="stylesheet">
+
    <!-- CSS ANIMATIONS-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- JAVASCRIPT -->
-   <script type="module" src="js/firebase.js"></script>
-   <script type="module" src="js/authGuard.js"></script>
+  <!-- JAVASCRIPT -->
+  <script type="module" src="js/firebase.js"></script>
+  <script type="module" src="js/authGuard.js"></script>
+  <script type="module" src="js/editVis.js"></script>
 </head>
 <body>
 
@@ -57,8 +58,8 @@
       <div class="navbar-right">
         <div class="navbar-icons">
           <a id="account-link" href="login.html" aria-label="Account or Login Page">
-              <i class="fa-solid fa-user fa-2xl" style="color: #2f2f5a;"></i>
-          </a>
+            <i class="fa-solid fa-user fa-2xl" style="color: #2f2f5a;"></i>
+        </a>
           <a href="cart.html" aria-label="Shopping Cart">
               <i class="fa-solid fa-cart-shopping fa-2xl" style="color: #2f2f5a;"></i>
           </a>
@@ -67,31 +68,43 @@
     </div>
   </nav>
 
-    
-<!-- BODY -->
-<div class="about">
-    <img class="page-photo" src="images/bailey-zindel.jpg" alt="Mountain by a River">
-    <h1 class="animate__animated animate__fadeIn">ABOUT US</h1>
-      <p>BerryCommerce is a site designed for Berry students, alumni, faculty, and the greater Rome and Berry community to have a place to sell
-          and buy student-made products from the Mountain Day and Spring Markets.
-      </p>
-    
-      <h2>ABOUT THE CREATOR...</h2>
-      <div class="creator-section">
-        <div class="creator-content">
-          <img src="images/headshot.jpg" class="creator-image" alt="Amelie Willett">
-          <p>Hi, my name is Amelie Willett and I am a senior Computer Science major with a Creative Technologies minor.
-              I coded, designed, and built BerryCommerce from scratch for my senior capstone class.
-          </p>
+  <!-- BODY -->
+  <div class="seller-page-container">
+    <div class="seller-header">
+        <div class="seller-info">
+            <h1 class="seller-name animate__animated animate__slideInDown" id="sellerP-name">Seller Name</h1>
+            <h2 class="seller-contact animate__animated animate__slideInDown">
+              <span id="sellerP-email">Email</span>
+          </h2>
         </div>
-        <div class="social-icons-abt">
-          <a href="https://www.linkedin.com/in/amelie-willett/" target="_blank" aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-        </a>
+        <div class="seller-logo">
+            <img src="images/placeholder.png" alt="Seller Logo" id="sellerP-logo">
         </div>
-      </div>
+        <div class="seller-socials">
+            <a href="#" target="_blank" id="sellerP-fb"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank" id="sellerP-insta"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <p class="product-description animate__animated animate__fadeIn" id="sellerP-description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+    </p>
+    
+    <h2 class="seller-our-products animate__animated animate__slideInDown">OUR PRODUCTS...</h2>
+
+    <div class="product-gallery animate__animated animate__fadeIn">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="images/placeholder.png" alt="Product 1">
+            </div>
+            <h3 class="product-name">Product 1</h3>
+            <p class="product-price">$25.00</p>
+        </div>
+        <!-- Additional products here, these get automatically updated like in productPost.js -->
     </div>
 </div>
+
+
 
 <!-- FOOTER -->
 <footer class="container-fluid text-center">
@@ -115,7 +128,7 @@
       </div>
   </div>
 </footer>
-
-
-</body>
-</html>
+  
+  </body>
+  </html>
+  
