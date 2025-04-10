@@ -20,3 +20,19 @@ TO DO:
 
 Notes:
 - Each business must have their own html page uploaded to the server (I can do this via admin, and since they have to be approved by admin anyway, this works fine.)
+
+Milestone 2 Completion and Milestone 3 Progress 4/10/2025
+- Image uploading / inserting API handled
+- Images are posted to all products, product listing pages, individual seller pages. (for both products and logo)
+- Admin product approval completion.
+- Business page information is automagically inputted/remembers input if already inputted once
+- Admins can view data for the product, approve, and reject.
+
+TO DO:
+- Product editing
+- Payment API (WIP)
+- Email notification for sellers if product is approved/rejected
+- Business approvals + email notifications
+- Preorder improvements
+- Add to cart functionality
+- Order updating for seller/user (preorder notif)
