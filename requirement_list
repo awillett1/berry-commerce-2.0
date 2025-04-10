@@ -7,10 +7,10 @@ Milestone 1:
 (DONE) Prevent users from accessing seller-side information etc. 
 
 Milestone 2:
-(ex. Seller opening a listing can see an edit post button)
-(DOING) how to post forms, will relate to Creating a product as a seller. 
-Individual seller pages and ensure product is posted to main listings page and individual seller pages. 
-Ensure Admin can approve/deny requests.
+(DONE) (ex. Seller opening a listing can see an edit post button)
+(DONE) how to post forms, will relate to Creating a product as a seller. 
+(DONE) Individual seller pages and ensure product is posted to main listings page and individual seller pages. 
+(DONE) Ensure Admin can approve/deny requests.
 
 Milestone 3:
 (TODO) authentication is done using a javascript redirect, later will be replaced by server side code, so server does not serve pages that is not meant to be seen.
