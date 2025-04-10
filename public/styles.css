@@ -2315,3 +2315,25 @@ footer {
     z-index: 10;
     text-decoration: underline
 }
+
+/* ADMIN-ACCOUNT.HTML */
+.status-pending {
+    color: orange;
+    font-weight: bold;
+}
+.status-accepted, .status-approved, .approved {
+    color: green;
+    font-weight: bold;
+}
+.status-rejected, .rejected {
+    color: red;
+    font-weight: bold;
+}
+
+/* Grey background for non-pending rows */
+.background-dark-gray {
+    background-color: #e0e0e0 !important;
+}
+.background-dark-gray:hover {
+    background-color: #e0e0e0 !important;
+}

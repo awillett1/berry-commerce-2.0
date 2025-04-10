@@ -24,6 +24,7 @@
   <script type="module" src="js/logout.js"></script>
   <script type="module" src="js/authGuard.js"></script>
   <script type="module" src="js/countdown.js"></script> <!-- countdown the days till the market -->
+  <script type="module" src="js/productApproval.js" defer></script> <!-- product approval functionality -->   
 </head>
 <body>
 
@@ -96,31 +97,8 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- Example Pending Product Row -->
-                        <tr>
-                            <td>Example Product</td>
-                            <td>This is an example product description.</td>
-                            <td>$19.99</td>
-                            <td class="status-pending">Pending Approval</td>
-                            <td>
-                                <button class="btn btn-success">Approve</button>
-                                <button class="btn btn-danger">Reject</button>
-                                <a href="path_to_product_form_submission_info_1" class="btn btn-info" target="_blank">View Form Info</a>
-                            </td>
-                        </tr>
-                        <!-- Example Product with Approval Info -->
-                        <tr>
-                            <td>Another Product</td>
-                            <td>This product is pending approval.</td>
-                            <td>$29.99</td>
-                            <td class="status-pending">Pending Approval</td>
-                            <td>
-                                <button class="btn btn-success">Approve</button>
-                                <button class="btn btn-danger">Reject</button>
-                                <a href="path_to_product_form_submission_info_2" class="btn btn-info" target="_blank">View Form Info</a>
-                            </td>
-                        </tr>
+                    <tbody id="products-table-body">
+                        <!-- Product rows will be added automagically :) -->
                     </tbody>
                 </table>
             </div>

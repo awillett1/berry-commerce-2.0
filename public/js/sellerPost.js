@@ -3,11 +3,15 @@
 // To be used with the seller's business page, eg. SellerName.html
 
 import { getDatabase, ref, get } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+import { getStorage, ref as storageRef, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
+
+// firebase stuff
 
 const db = getDatabase();
+const storage = getStorage();
 
 function updateSellerPage(businessName) {
-    const sellersRef = ref(db, 'sellers');
+    const sellersRef = ref(db, 'sellers'); // check the sellers database
 
     get(sellersRef).then((snapshot) => {
         if (!snapshot.exists()) {
@@ -15,12 +19,11 @@ function updateSellerPage(businessName) {
             return;
         }
 
-        let sellerUid = null;
+        let sellerUid = null; // initialize sellerUid
 
-        // Find the seller by businessName
+        // find the seller by businessName
         snapshot.forEach((childSnapshot) => {
             const sellerData = childSnapshot.val();
-            // console.log('Seller Data:', sellerData); // debugging
             if (sellerData.businessName === businessName) {
                 sellerUid = childSnapshot.key;  // UID
             }
@@ -31,8 +34,6 @@ function updateSellerPage(businessName) {
             return;
         }
 
-        // console.log('Found Seller UID:', sellerUid); // debugging 
-
         // get seller details using UID
         const sellerRef = ref(db, `sellers/${sellerUid}`);
         get(sellerRef).then((sellerSnapshot) => {
@@ -42,44 +43,67 @@ function updateSellerPage(businessName) {
             }
 
             const sellerData = sellerSnapshot.val();
-            const { businessEmail, businessDescription, instagram, facebook } = sellerData;
+            const { businessEmail, businessDescription, instagram, facebook, imgURL } = sellerData;
 
             // update seller info on page
+            // get the ids for each element
             const sellerNameElement = document.getElementById('sellerP-name');
             const sellerEmailElement = document.getElementById('sellerP-email');
             const sellerDescriptionElement = document.getElementById('sellerP-description');
             const sellerInstaLink = document.getElementById('sellerP-insta');
             const sellerFbLink = document.getElementById('sellerP-fb');
+            const sellerImgElement = document.getElementById('sellerP-logo');
 
             if (sellerNameElement) sellerNameElement.textContent = businessName;
-            if (sellerEmailElement && businessEmail) {
-                sellerEmailElement.innerHTML = `<a href="mailto:${businessEmail}" class="email-link">${businessEmail}</a>`; // automatically adds "mailto:" fn
+            if (sellerEmailElement && businessEmail) { // add the mailto link
+                sellerEmailElement.innerHTML = `<a href="mailto:${businessEmail}" class="email-link">${businessEmail}</a>`;
             }
             if (sellerDescriptionElement) sellerDescriptionElement.textContent = businessDescription || 'No description available';
+            // default if not avail
 
-            // instagram and facebook links. if they were not added in the form, hide them.
+            // if there is a link for instagram
             if (sellerInstaLink) {
                 if (instagram) {
-                    sellerInstaLink.href = `https://www.instagram.com/${instagram}`;
+                    sellerInstaLink.href = `https://www.instagram.com/${instagram}`; // add the instagram link
                     sellerInstaLink.style.display = 'inline';
                 } else {
-                    sellerInstaLink.style.display = 'none';
+                    sellerInstaLink.style.display = 'none'; // if not available, hide the link/logo
                 }
             }
 
+            // if there is a link for facebook
             if (sellerFbLink) {
                 if (facebook) {
-                    sellerFbLink.href = `https://www.facebook.com/${facebook}`;
+                    sellerFbLink.href = `https://www.facebook.com/${facebook}`; // add the facebook link
                     sellerFbLink.style.display = 'inline';
                 } else {
-                    sellerFbLink.style.display = 'none';
+                    sellerFbLink.style.display = 'none'; // if not available, hide the link/logo
+                }
+            }
+
+            // get and display seller logo image from FB storage
+            if (imgURL) {
+                const imgRef = storageRef(storage, imgURL);
+                getDownloadURL(imgRef).then((url) => {
+                    if (sellerImgElement) {
+                        sellerImgElement.src = url;
+                    }
+                }).catch((error) => {
+                    console.error("Error fetching seller image from Firebase Storage: ", error);
+                    if (sellerImgElement) {
+                        sellerImgElement.src = 'images/placeholder.png'; // default image if none exists
+                    }
+                });
+            } else {
+                if (sellerImgElement) {
+                    sellerImgElement.src = 'images/placeholder.png'; // default image if none exists
                 }
             }
 
             // get and display products for this seller
-            updateSellerProducts(sellerUid); 
+            updateSellerProducts(sellerUid);
 
-            // this was giving me trouble with the timing, so for now listingPost.js only runs when sellerPost.js is done. (hopefully?)
+             // this was giving me trouble with the timing, so for now listingPost.js only runs when sellerPost.js is done. (hopefully?)
             const listingPostScript = document.getElementById('listingPostScript');
             if (listingPostScript) {
                 listingPostScript.removeAttribute('disabled');
@@ -94,9 +118,9 @@ function updateSellerPage(businessName) {
     });
 }
 
+// update the products for the seller
 function updateSellerProducts(sellerUid) {
-    
-    const productsRef = ref(db, `products/${sellerUid}`); // get all the products associated with that seller's uid.
+    const productsRef = ref(db, `products/${sellerUid}`);
 
     get(productsRef).then((snapshot) => {
         if (!snapshot.exists()) {
@@ -106,34 +130,39 @@ function updateSellerProducts(sellerUid) {
 
         const productGallery = document.querySelector('.product-gallery');
         productGallery.innerHTML = ''; // clear it
-        
+
         snapshot.forEach((productSnapshot) => {
             const productData = productSnapshot.val();
-            // console.log('Product Data:', productData); // debugging
-        
+
+            // only add the product if its status is "accepted"
+            if (productData.status !== "approved") {
+                return;  // skip it if its not there
+            }
+
             // create product card
             const productCard = document.createElement('div');
             productCard.classList.add('product-card');
-        
+
             // make a product url slug for the listing page. combination of the user's id and product id to make sure it does not get mixed up with other products
             // this is so listing.html / listingPost.js can find the right product
             const productUrl = `listing.html?userId=${sellerUid}&productId=${productSnapshot.key}`;
-        
+
             // create product card content
             productCard.innerHTML = `
                 <a href="${productUrl}" class="product-link">
                     <div class="product-image">
-                        <img src="${productData.imageUrl || 'images/placeholder.png'}" alt="${productData.productName}">
+                        <img src="${productData.imgURL || 'images/placeholder.png'}" alt="${productData.productName}">
                     </div>
                     <h3 class="product-name">${productData.productName}</h3>
                     <p class="product-price">$${productData.price?.toFixed(2) || 'N/A'}</p>
                     <p class="product-description">${productData.productDesc || 'No description available.'}</p>
                 </a>
             `;
-        
-            productGallery.appendChild(productCard); // add card to the gallery
+            // defaults and alt text if not avail
+
+            productGallery.appendChild(productCard); // add the card to the gallery
         });
-        
+
     }).catch((error) => {
         console.error("Error fetching products: ", error);
     });

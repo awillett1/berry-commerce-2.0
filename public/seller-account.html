@@ -22,12 +22,12 @@
    <!-- JAVASCRIPT -->
    <script type="module" src="js/firebase.js"></script>
    <script type="module" src="js/logout.js"></script>
+   <script type="module" src="js/sellerLink.js"></script> <!-- dynamically updates the seller page -->
    <script type="module" src="js/sellerPageForm.js"></script> <!-- for the update form -->
-   <script type="module" src="js/sellerPage.js"></script> <!-- for the seller page -->
    <script type="module" src="js/authGuard.js"></script>
    <script type="module" src="js/passwordReset.js"></script>
    <script type="module" src="js/productForm.js"></script> <!-- for the product form -->    
-   <script type="module" src="js/sellerLink.js"></script> <!-- dynamically updates the seller page -->
+   <script type="module" src="js/existingProducts.js"></script> <!-- for the existing products table -->
    <script type="module" src="js/countdown.js"></script> <!-- countdown the days till the market -->
 </head>
 <body>
@@ -146,6 +146,8 @@
                     </div>
 
                     <!-- Logo -->
+                    <p>Please ensure your file is under 100kb before uploading.</p>
+                    <p>After uploading your logo once, your business logo will be added to the seller form page. Please do not reupload it unless you are changing the file.</p>
                     <div class="seller-group-set">
                         <label for="business-photo" class="seller-label-set">Business Photo</label>
                         <input type="file" id="business-photo" class="seller-input-set" accept="image/*">
@@ -179,6 +181,7 @@
                     </div>
 
                     <!-- Product Image -->
+                    <p>Please ensure your file is under 100kb before uploading.</p>
                     <div class="seller-group-set">
                         <label for="product-image" class="seller-label-set">Product Image</label>
                         <input type="file" id="product-image" class="seller-input-set" accept="image/*" multiple required>
@@ -198,32 +201,8 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- Example Product Row (Pending Approval) -->
-                        <tr>
-                            <td>Example Product</td>
-                            <td>This is an example product description.</td>
-                            <td>$19.99</td>
-                            <td class="status-pending">Waiting to be approved...</td>
-                            <td>
-                                <!-- Actions are disabled for products waiting for approval -->
-                                <button class="btn btn-warning" disabled>Edit</button>
-                                <button class="btn btn-danger" disabled>Delete</button>
-                            </td>
-                        </tr>
-
-                        <!-- Example Product Row (Approved) -->
-                        <tr>
-                            <td>Another Product</td>
-                            <td>This product is already approved and listed.</td>
-                            <td>$29.99</td>
-                            <td class="status-approved">Approved!</td>
-                            <td>
-                                <!-- Actions are enabled for approved products -->
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
+                    <tbody id="product-table-body">
+                        <!-- Products get automagically populated here :) -->
                     </tbody>
                 </table>
             </div>
