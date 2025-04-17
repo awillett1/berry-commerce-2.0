@@ -36,3 +36,11 @@ TO DO:
 - Preorder improvements
 - Add to cart functionality
 - Order updating for seller/user (preorder notif)
+
+Milestone 3 Progress/Completion 4/17/2025
+- Order tables are automagically added
+- Markdown API
+- Sanitized inputs
+- Add to cart functionality
+- Edit and deleting products
+- Email notifications
