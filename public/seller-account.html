@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="module">import dompurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.2.5/+esm';</script>
+  <script type="module">import marked from 'https://cdn.jsdelivr.net/npm/marked@15.0.8/+esm'</script>
   <!-- CSS + ICONS -->
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -28,6 +30,7 @@
    <script type="module" src="js/passwordReset.js"></script>
    <script type="module" src="js/productForm.js"></script> <!-- for the product form -->    
    <script type="module" src="js/existingProducts.js"></script> <!-- for the existing products table -->
+   <script type="module" src="js/sellerOrders.js"></script> <!-- for the orders table -->
    <script type="module" src="js/countdown.js"></script> <!-- countdown the days till the market -->
 </head>
 <body>
@@ -83,7 +86,8 @@
             <li class="active"><a href="#account-settings" role="tab" data-toggle="tab">Account Settings</a></li>
             <li><a href="#seller-profile" role="tab" data-toggle="tab">Seller Profile</a></li>
             <li><a href="#product-management" role="tab" data-toggle="tab">Product Management</a></li>
-            <li><a href="#orders" role="tab" data-toggle="tab">Orders</a></li> <!-- New Tab for Orders -->
+            <li><a href="#orders" role="tab" data-toggle="tab">Orders</a></li> 
+            
         </ul>
 
         <!-- Tab Content -->
@@ -105,10 +109,12 @@
                 <a href="#" id="profile-link" class="signup-link animate__animated animate__fadeIn">Go to Seller Profile</a>
 
                 <form class="profile-form animate__animated animate__fadeIn" id="seller-page-form" method="post">
+                    <p>We support <a href="https://daringfireball.net/projects/markdown/" target="blank">Markdown!</a></p>
                     <!-- Business Name -->
                     <div class="seller-group-set">
                         <label for="business-name" class="seller-label-set">Business Name</label>
-                        <input type="text" id="business-name" class="seller-input-set" placeholder="Enter your business name">
+                        <p>To change your business name, please contact <a href="mailto:berrycommerce@berry.edu">us.</a></p>
+                        <input type="text" id="business-name" class="seller-input-set" placeholder="Enter your business name" disabled>
                     </div>
 
                     <!-- Business Email -->
@@ -149,7 +155,7 @@
                     <p>Please ensure your file is under 100kb before uploading.</p>
                     <p>After uploading your logo once, your business logo will be added to the seller form page. Please do not reupload it unless you are changing the file.</p>
                     <div class="seller-group-set">
-                        <label for="business-photo" class="seller-label-set">Business Photo</label>
+                        <label for="business-photo" class="seller-label-set">Business Logo</label>
                         <input type="file" id="business-photo" class="seller-input-set" accept="image/*">
                     </div>
                     
@@ -160,6 +166,8 @@
             <!-- Product Management Tab -->
             <div class="tab-pane" id="product-management">
                 <h2 class="product-title-seller animate__animated animate__fadeIn">Manage Your Products</h2>
+                <p>We support <a href="https://daringfireball.net/projects/markdown/" target="blank">Markdown!</a></p>
+                <p class="seller-text" id="form-status"</p>
 
                 <form class="product-form animate__animated animate__fadeIn" method="post" id="seller-page-product-form">
                     <!-- Product Name -->
@@ -180,14 +188,35 @@
                         <input type="text" id="product-price" class="seller-input-set" placeholder="Enter product price" required>
                     </div>
 
-                    <!-- Product Image -->
-                    <p>Please ensure your file is under 100kb before uploading.</p>
+                    <!-- Product Tags -->
                     <div class="seller-group-set">
-                        <label for="product-image" class="seller-label-set">Product Image</label>
-                        <input type="file" id="product-image" class="seller-input-set" accept="image/*" multiple required>
+                        <label for="product-tag" class="seller-label-set">Product Category</label>
+                        <select id="product-tag" class="seller-input-set" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="apparel-access">Apparel and Accessories</option>
+                            <option value="home-living">Home and Living</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="beauty">Beauty</option>
+                            <option value="food">Food</option>
+                            <option value="toys-hobbies">Toys and Hobbies</option>
+                            <option value="pets">Pets</option>
+                            <option value="books-media">Books and Media</option>
+                            <option value="travel-outdoors">Travel and Outdoors</option>
+                            <option value="sports-fitness">Sports and Fitness</option>
+                            <option value="art">Art and Stickers</option>
+                        </select>
                     </div>
 
-                    <button type="submit" class="seller-save-btn">Add Product</button>
+                    <!-- Product Image -->
+                    <p>Please ensure your file is under 100kb before uploading.</p>
+                    <p>You can preview your existing product image below.</p>
+                    <div class="seller-group-set">
+                        <label for="product-image" class="seller-label-set">Product Image</label>
+                        <img id="existing-product-image" src="" alt="Existing Product Image" style="max-width: 200px; margin-top: 10px; padding: 20px;">
+                        <input type="file" id="product-image" class="seller-input-set" accept="image/*">
+                    </div>
+
+                    <button type="submit" id="seller-submit-btn" class="seller-save-btn">Add Product</button>
                 </form>
 
                 <h3>Existing Products</h3>
@@ -222,60 +251,9 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- Example Order Row (Preparing) -->
-                        <tr>
-                            <td>#001</td>
-                            <td>John Doe</td>
-                            <td>Example Product</td>
-                            <td>1</td>
-                            <td>
-                                <select class="order-status" name="status" id="order-status-001">
-                                    <option value="preparing" selected>Preparing</option>
-                                    <option value="ready-for-pickup">Ready for Pickup</option>
-                                    <option value="delivered">Successfully Delivered</option>
-                                </select>
-                            </td>
-                            <td>
-                                <button class="btn btn-info">Update Status</button>
-                            </td>
-                        </tr>
-
-                        <!-- Example Order Row (Ready for Pickup) -->
-                        <tr>
-                            <td>#002</td>
-                            <td>Jane Smith</td>
-                            <td>Another Product</td>
-                            <td>2</td>
-                            <td>
-                                <select class="order-status" name="status" id="order-status-002">
-                                    <option value="preparing">Preparing</option>
-                                    <option value="ready-for-pickup" selected>Ready for Pickup</option>
-                                    <option value="delivered">Successfully Delivered</option>
-                                </select>
-                            </td>
-                            <td>
-                                <button class="btn btn-info">Update Status</button>
-                            </td>
-                        </tr>
-
-                        <!-- Example Order Row (Delivered) -->
-                        <tr>
-                            <td>#003</td>
-                            <td>Sam Johnson</td>
-                            <td>Sample Product</td>
-                            <td>3</td>
-                            <td>
-                                <select class="order-status"name="status" id="order-status-003">
-                                    <option value="preparing">Preparing</option>
-                                    <option value="ready-for-pickup">Ready for Pickup</option>
-                                    <option value="delivered" selected>Successfully Delivered</option>
-                                </select>
-                            </td>
-                            <td>
-                                <button class="btn btn-info">Update Status</button>
-                            </td>
-                        </tr>
+                    <tbody id="orders-table-body">
+                        <!-- Orders get automagically populated here :) -->
+                        <!-- sellerOrders.js -->
                     </tbody>
                 </table>
             </div>

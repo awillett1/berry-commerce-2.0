@@ -19,3 +19,7 @@ hmm/index.html
 remoteconfig.template.json
 public/js/firebase.js
 .firebase/hosting.cHVibGlj.cache
+functions-new/index.js
+functions-new/package-lock.json
+/functions-new
+/hmm

@@ -4,11 +4,15 @@
 // To be used with admin-account.html
 
 import { getDatabase, ref, get, update } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+import { getFirestore, doc, setDoc, collection } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 // import { getStorage } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
+
+import { marked } from 'https://cdn.jsdelivr.net/npm/marked@latest/lib/marked.esm.js';
+import DOMPurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.2.5/+esm';
 
 // firebase stuff
 const db = getDatabase();
-// const storage = getStorage(); // is this necess?? was keeping it for the image upload stuff 
+const fs = getFirestore();
 
 // get table body element
 const productsTableBody = document.getElementById('products-table-body');
@@ -20,8 +24,9 @@ function addProductToTable(productData, productId) {
     const status = (productData.status || 'Unknown').toLowerCase();
     const statusClass = `status-${status}`; // e.g., status-pending, status-approved
 
-    const productName = productData.productName || 'No product name available';
-    const productDesc = productData.productDesc || 'No description available';
+    const productName = sanitizeInput(productData.productName || 'No product name available');
+    // Limit description to 40 characters
+    const productDesc = sanitizeInput(productData.productDesc ? productData.productDesc.slice(0, 40) : 'No description available') + (productData.productDesc && productData.productDesc.length > 40 ? '...' : '');
     const price = (productData.price != null) ? `$${productData.price.toFixed(2)}` : 'N/A';
 
     // add background color to row only if status is approved or rejected
@@ -48,6 +53,7 @@ function addProductToTable(productData, productId) {
 
     productsTableBody.appendChild(row);
 }
+
 
 // fetch all products, pending first
 function fetchAllProducts() {
@@ -106,9 +112,9 @@ function viewFormData(productId) {
 
             if (userProducts.hasOwnProperty(productId)) {
                 const product = userProducts[productId];
-                const productName = product.productName || 'N/A'; // default if not available
-                const productDesc = product.productDesc || 'N/A';
-                const price = (product.price != null) ? `$${parseFloat(product.price).toFixed(2)}` : 'N/A';
+                const productName = sanitizeInput(product.productName || 'N/A'); // default if not available
+                const productDesc = sanitizeInput(product.productDesc || 'N/A');
+                const price = (product.price != null) ? `$${parseInt(product.price).toFixed(2)}` : 'N/A';
                 const status = product.status || 'N/A';
                 const imgURL = product.imgURL || 'images/placeholder.png'; // default
 
@@ -120,6 +126,7 @@ function viewFormData(productId) {
                         const sellerName = sellerData.businessName || 'Unknown Seller';
 
                         // create the popup window to display product and seller data, aka make it pretty
+                        //TODO change it from write
                         const popup = window.open('', '_blank', 'width=600,height=700');
                         popup.document.write(`
                             <html>
@@ -139,7 +146,7 @@ function viewFormData(productId) {
                                         <div class="product-info">
                                             <h1 class="product-name">Product Name: ${productName}</h1>
                                             <h2 class="price">Price: ${price}</h2>
-                                            <p class="product-description">Description: ${productDesc}</p>
+                                            <p class="product-description">Description: ${marked(productDesc)}</p>
                                             <p class="product-status">Status: ${status}</p>
 
                                             <p class="seller-info">Seller: ${sellerName}</p>
@@ -167,7 +174,7 @@ function viewFormData(productId) {
 }
 
 // update product status (approved or rejected) (abstracted)
-function updateProductStatus(productId, newStatus) {
+async function updateProductStatus(productId, newStatus) {
     console.log(`${newStatus} logic for ${productId} goes here.`);
 
     const productsRef = ref(db, 'products'); // ref to the product in the db
@@ -176,51 +183,65 @@ function updateProductStatus(productId, newStatus) {
     get(productsRef).then((snapshot) => {
         if (snapshot.exists()) {
             snapshot.forEach((userSnapshot) => {
-                const userId = userSnapshot.key;  // Seller's userId
-                const userProducts = userSnapshot.val();  // all products for this seller
+                const userId = userSnapshot.key;
+                const userProducts = userSnapshot.val();
 
                 if (userProducts.hasOwnProperty(productId)) {
                     const productData = userProducts[productId];
-                    
-                    // ref to the specific product in the database
                     const productRef = ref(db, `products/${userId}/${productId}`);
 
-                    // update the product's status
                     update(productRef, { status: newStatus })
-                        .then(() => {
+                        .then(async () => {
                             console.log(`Product ${productId} ${newStatus} successfully.`);
+                            
+                            const updatedSnapshot = await get(productRef);
+                            if (updatedSnapshot.exists()) {
+                                const updatedData = updatedSnapshot.val();
+                                console.log(`Updated status after ${newStatus}: ${updatedData.status}`);
 
-                            // fetch and log the updated status after approval/rejection
-                            get(productRef).then((snapshot) => {
-                                if (snapshot.exists()) {
-                                    const updatedData = snapshot.val();
-                                    console.log(`Updated status after ${newStatus}: ${updatedData.status}`); // debugging
+                                const sellerRef = ref(db, `sellers/${userId}`);
+                                const sellerSnapshot = await get(sellerRef);
 
-                                    // fetch seller data
-                                    const sellerRef = ref(db, `sellers/${userId}`);
-                                    get(sellerRef).then((sellerSnapshot) => {
-                                        if (sellerSnapshot.exists()) {
-                                            const sellerData = sellerSnapshot.val();
-                                            const sellerName = sellerData.businessName || 'Unknown Seller';
+                                if (sellerSnapshot.exists()) {
+                                    const sellerData = sellerSnapshot.val();
+                                    const sellerName = sellerData.businessName || 'Unknown Seller';
+                                    const userEmail = sellerData.businessEmail || 'noreplyberrycommerce@gmail.com'; // sends to us instead of a random
+                                    // will send to the seller's email that is on their seller page. (may not be necess. the one associated with acct)
 
-                                            // alert the admin with the product's updated status and seller info
-                                            alert(`Product "${updatedData.productName}" from seller "${sellerName}" has been ${newStatus}.`);
-                                            refreshProductTable();  // refresh the table
-                                        } else {
-                                            console.log("Error: Seller not found.");
+                                    console.log(userEmail);
+
+                                    // mail database !!
+                                
+                                    // product approval/rejection email data
+                                    const mailRef = collection(fs, "mail");
+                                    await setDoc(doc(mailRef), {
+                                        to: [userEmail],
+                                        message: {
+                                            subject: `Your product has been ${newStatus}`,
+                                            html: `
+                                                <p>Hi ${userEmail},</p>
+                                                <p>Your product <strong>${updatedData.productName}</strong> has been <strong>${newStatus}</strong>.</p>
+                                                <p>If you have any questions, feel free to contact us at <a href="mailto:berrycommerce@berry.edu">berrycommerce@berry.edu</a>.</p>
+                                                <p>Thank you for using Berry Commerce!</p>
+                                                <p>- Berry Commerce Team</p>
+                                            `
                                         }
-                                    }).catch((error) => {
-                                        console.error("Error fetching seller data:", error);
                                     });
+
+                                    alert(`Product "${updatedData.productName}" from seller "${sellerName}" has been ${newStatus}.`);
+                                    refreshProductTable();
                                 } else {
-                                    console.log("Error: Product not found after status update.");
+                                    console.log("Error: Seller not found.");
                                 }
-                            });
+                            } else {
+                                console.log("Error: Product not found after status update.");
+                            }
                         })
                         .catch((error) => {
                             console.error(`Error updating product status to ${newStatus}:`, error);
                         });
-                    return;  // exit loop once found/updated
+
+                    return;
                 }
             });
         } else {
@@ -231,14 +252,18 @@ function updateProductStatus(productId, newStatus) {
     });
 }
 
+
 // approve product (calls updateProductStatus)
 function approveProduct(productId) {
-    updateProductStatus(productId, 'approved');
+    if (confirm("Are you sure you want to approve this product?")) {
+        updateProductStatus(productId, 'approved');
+    }
 }
 
-// reject product (calls updateProductStatus)
 function rejectProduct(productId) {
-    updateProductStatus(productId, 'rejected');
+    if (confirm("Are you sure you want to reject this product?")) {
+        updateProductStatus(productId, 'rejected');
+    }
 }
 
 // refresh the product table
@@ -250,6 +275,11 @@ function refreshProductTable() {
 
     // fetch all products again and re-render the table
     fetchAllProducts();
+}
+
+// sanitize input using DOMPurify
+function sanitizeInput(input) {
+    return DOMPurify.sanitize(input);
 }
 
 // make them show up (global)

@@ -1,4 +1,4 @@
-// login.js
+// logout.js
 // To be used with the logout button on user-account.html, seller-account.html, and admin-account.html.
 // Handles forgetting password and logging into an account
 

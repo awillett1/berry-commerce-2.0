@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+  <script type="module">import dompurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.2.5/+esm';</script>
+  <script type="module">import marked from 'https://cdn.jsdelivr.net/npm/marked@15.0.8/+esm'</script>
   <!-- CSS + ICONS -->
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -24,6 +25,7 @@
    <script type="module" src="js/firebase.js"></script>
    <script type="module" src="js/authGuard.js"></script>
    <script type="module" src="js/productPost.js"></script> <!-- automatically populate listings -->
+   <script type="module" src="js/search.js"></script> <!-- search bar functionality -->
    <script type="module" src="js/listingPost.js"></script> <!-- automatically populate listing pages -->
    <script type="module" src="js/countdown.js"></script> <!-- countdown the days till the market -->
 </head>
@@ -79,22 +81,39 @@
     <!-- Filters, Tags, and Search Bar -->
     <div class="filters-container animate__animated animate__fadeIn">
         <div class="filters">
-            <div class="tags">
-                <span class="tag">Tag 1</span>
-                <span class="tag">Tag 2</span>
-                <span class="tag">Tag 3</span>
+            <div class="tags animate__animated animate__fadeIn">
+                <span class="tag" id="shop-all">Shop All</span>
+                <span class="tag" id="apparel-access">Apparel and Accessories</span>
+                <span class="tag" id="home-living">Home and Living</span>
+                <span class="tag" id="electronics">Electronics</span>
+                <span class="tag" id="beauty">Beauty</span>
+                <span class="tag" id="food">Food</span>
+                <span class="tag" id="toys-hobbies">Toys and Hobbies</span>
+                <span class="tag" id="pets">Pets</span>
+                <span class="tag" id="books-media">Books and Media</span>
+                <span class="tag" id="travel-outdoors">Travel and Outdoors</span>
+                <span class="tag" id="sports-fit">Sports and Fitness</span>
+                <span class="tag" id="art">Art and Stickers</span>
             </div>
         </div>
         <div class="search-bar animate__animated animate__fadeIn">
             <input type="text" id="search-input" placeholder="Search products...">
+            <button id="search-button" class="search-button">Search</button>
         </div>
     </div>
 </div>
 
 <!-- EXAMPLE PRODUCT LISTING-->
-    <!-- These will be automatically populated...-->
+<!-- These will be automatically populated...-->
 <div id="product-container" class="product-listing-container animate__animated animate__fadeIn">
 </div>
+<div id="no-products-message" style="display: none;">
+  <p>Nothing is available under this category. Please select another category or click "Shop All" to see all our options.</p>
+</div>
+<div id="not-signed-in" style="display: none;">
+  <p>Please <a href="login.html">login</a> or <a href="create.html">create an account</a> to see our products.</p>
+</div>
+
 
 
 <!-- FOOTER -->

@@ -5,6 +5,9 @@
 import { getDatabase, ref, get } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
 import { getStorage, ref as storageRef, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
+import { marked } from 'https://cdn.jsdelivr.net/npm/marked@latest/lib/marked.esm.js';
+import DOMPurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.2.5/+esm';
+
 // firebase stuff
 
 const db = getDatabase();
@@ -20,16 +23,26 @@ function updateSellerPage(businessName) {
         }
 
         let sellerUid = null; // initialize sellerUid
+        let actualBusinessName = ""; // business name of seller without spaces/caps
 
-        // find the seller by businessName
+        // find the seller by businessName 
         snapshot.forEach((childSnapshot) => {
             const sellerData = childSnapshot.val();
-            if (sellerData.businessName === businessName) {
+
+            // remove spaces/make lowercase for comparison
+            const normalBus = businessName.replace(/\s+/g, '').toLowerCase();
+            const normalDb = sellerData.businessName.replace(/\s+/g, '').toLowerCase();
+
+            console.log("Normalized URL Business Name:", normalBus); // debugging
+            console.log("Normalized Database Business Name:", normalDb); // debugging
+
+            if (normalDb === normalBus) {
                 sellerUid = childSnapshot.key;  // UID
+                actualBusinessName = sellerData.businessName; // what will be displayed
             }
         });
 
-        if (!sellerUid) {
+        if (!sellerUid) { 
             console.log("No seller found with the specified businessName.");
             return;
         }
@@ -54,17 +67,21 @@ function updateSellerPage(businessName) {
             const sellerFbLink = document.getElementById('sellerP-fb');
             const sellerImgElement = document.getElementById('sellerP-logo');
 
-            if (sellerNameElement) sellerNameElement.textContent = businessName;
+            if (sellerNameElement) sellerNameElement.textContent = sanitizeInput(actualBusinessName);
             if (sellerEmailElement && businessEmail) { // add the mailto link
-                sellerEmailElement.innerHTML = `<a href="mailto:${businessEmail}" class="email-link">${businessEmail}</a>`;
+                sellerEmailElement.innerHTML = `<a href="mailto:${sanitizeInput(businessEmail)}" class="email-link">${sanitizeInput(businessEmail)}</a>`;
             }
-            if (sellerDescriptionElement) sellerDescriptionElement.textContent = businessDescription || 'No description available';
+            if (sellerDescriptionElement) {
+                const safeHTML = sanitizeInput(marked.parse(businessDescription || 'No description available'));
+                sellerDescriptionElement.innerHTML = safeHTML;
+            }
+            
             // default if not avail
 
             // if there is a link for instagram
             if (sellerInstaLink) {
                 if (instagram) {
-                    sellerInstaLink.href = `https://www.instagram.com/${instagram}`; // add the instagram link
+                    sellerInstaLink.href = `https://www.instagram.com/${sanitizeInput(instagram)}`; // add the instagram link
                     sellerInstaLink.style.display = 'inline';
                 } else {
                     sellerInstaLink.style.display = 'none'; // if not available, hide the link/logo
@@ -74,7 +91,7 @@ function updateSellerPage(businessName) {
             // if there is a link for facebook
             if (sellerFbLink) {
                 if (facebook) {
-                    sellerFbLink.href = `https://www.facebook.com/${facebook}`; // add the facebook link
+                    sellerFbLink.href = `https://www.facebook.com/${sanitizeInput(facebook)}`; // add the facebook link
                     sellerFbLink.style.display = 'inline';
                 } else {
                     sellerFbLink.style.display = 'none'; // if not available, hide the link/logo
@@ -147,15 +164,18 @@ function updateSellerProducts(sellerUid) {
             // this is so listing.html / listingPost.js can find the right product
             const productUrl = `listing.html?userId=${sellerUid}&productId=${productSnapshot.key}`;
 
+            const productDescription = productData.productDesc || 'No description available.';
+            const shortDescription = productDescription.length > 40 ? productDescription.slice(0, 40) + '...' : productDescription;
+
             // create product card content
             productCard.innerHTML = `
                 <a href="${productUrl}" class="product-link">
                     <div class="product-image">
-                        <img src="${productData.imgURL || 'images/placeholder.png'}" alt="${productData.productName}">
+                        <img src="${productData.imgURL || 'images/placeholder.png'}" alt="${sanitizeInput(productData.productName)}">
                     </div>
-                    <h3 class="product-name">${productData.productName}</h3>
+                    <h3 class="product-name">${sanitizeInput(productData.productName)}</h3>
                     <p class="product-price">$${productData.price?.toFixed(2) || 'N/A'}</p>
-                    <p class="product-description">${productData.productDesc || 'No description available.'}</p>
+                    <p class="product-description">${sanitizeInput(shortDescription)}</p>
                 </a>
             `;
             // defaults and alt text if not avail
@@ -168,6 +188,13 @@ function updateSellerProducts(sellerUid) {
     });
 }
 
+
+// sanitize input using DOMPurify
+function sanitizeInput(input) {
+    return DOMPurify.sanitize(input);
+}
+
 // get business name from URL ("businessName.html")
-const businessNameFromURL = window.location.pathname.split('/').pop().split('.').shift();
+const businessNameFromURL = window.location.pathname.split('/').pop().split('.').shift().toLowerCase().replace(/\s+/g, '')
+console.log("Business name from URL:", businessNameFromURL);
 updateSellerPage(businessNameFromURL);

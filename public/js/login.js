@@ -4,6 +4,9 @@
 
 import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 
+import { marked } from 'https://cdn.jsdelivr.net/npm/marked@latest/lib/marked.esm.js';
+import DOMPurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.2.5/+esm';
+
 // add listeners
 document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('login-form');
@@ -27,8 +30,8 @@ async function handleLogin(event) {
     event.preventDefault(); 
 
     const auth = getAuth();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('pass').value;
+    const email = sanitizeInput(document.getElementById('email').value.trim());
+    const password = sanitizeInput(document.getElementById('pass').value.trim());;
 
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -60,4 +63,9 @@ async function handlePasswordReset(event) {
     } else {
         alert('Please enter a valid email address.');
     }
+}
+
+// sanitize input using DOMPurify
+function sanitizeInput(input) {
+    return DOMPurify.sanitize(input);
 }

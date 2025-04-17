@@ -8,6 +8,7 @@
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
+
 const auth = getAuth();
 const db = getFirestore();
 
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!userDoc.exists()) return;
 
         const userRole = userDoc.data().role;
-        const roleToPage = {
+        const roleToPage = { // links to redirect to based on role
             "admin": "admin-account.html",
             "seller": "seller-account.html",
             "user": "user-account.html"
@@ -54,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         for (const page in restrictedPages) {
             if (path.includes(page) && !restrictedPages[page].includes(userRole)) {
                 alert("You do not have access to this page."); // TODO update this to fully block out?
+                //TODO need to make sure tables do not load in the background
                 window.location.href = "login.html";
                 break;
             }

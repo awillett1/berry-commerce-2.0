@@ -4,6 +4,9 @@
 
 import { getDatabase, ref, push, set } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
 
+import { marked } from 'https://cdn.jsdelivr.net/npm/marked@latest/lib/marked.esm.js';
+import DOMPurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.2.5/+esm';
+
 // firebase stuff
 const db = getDatabase();
 const messagesRef = ref(db, 'messages');
@@ -19,6 +22,12 @@ function submitForm(e) {
     var email = getInputVal('email-contact');
     var message = getInputVal('help');
 
+    // sanitize input
+    firstName - sanitizeInput(firstName);
+    lastName = sanitizeInput(lastName);
+    email = sanitizeInput(email);
+    message = sanitizeMsg(message);
+
     // save message
     saveMsg(firstName, lastName, email, message);
 
@@ -29,6 +38,20 @@ function submitForm(e) {
 // get form values
 function getInputVal(id) {
     return document.getElementById(id).value.trim(); 
+}
+
+// sanitize input using DOMPurify
+function sanitizeInput(input) {
+    return DOMPurify.sanitize(input);
+}
+
+// sanitize and convert markdown to HTML
+function sanitizeMsg(message) {
+    const htmlMsg = marked(message); // markdown to html
+    return DOMPurify.sanitize(htmlMsg, {
+        ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br'], 
+        ALLOWED_ATTR: ['href'] 
+    });
 }
 
 // save message to firebase

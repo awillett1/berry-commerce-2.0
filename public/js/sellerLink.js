@@ -1,5 +1,6 @@
 // sellerLink.js
 // Updates the profile link on page load by finding the seller based on UID
+// To be used with seller-account.html and listing.html
 
 import { getDatabase, ref, get } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
@@ -23,10 +24,16 @@ function updateProfileLink() {
                         const sellerData = childSnapshot.val();
                         if (childSnapshot.key === user.uid) {  // match user UID with seller UID
                             businessName = sellerData.businessName;
+                            console.log("Seller found:", businessName);
                         }
                     });
 
                     if (businessName) {
+                        // remove spaces and make lowercase so it works
+                        businessName = businessName.replace(/\s+/g, '').toLowerCase();
+                        businessName = businessName.replace(/[^a-z0-9]/g, ''); // remove special characters
+                        console.log("Formatted business name:", businessName);
+
                         const profileLinkElement = document.getElementById('profile-link');
                         if (profileLinkElement) {
                             profileLinkElement.href = `${businessName}.html`; // set profile link

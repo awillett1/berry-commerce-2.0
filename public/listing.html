@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="module">import dompurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.2.5/+esm';</script>
+  <script type="module">import marked from 'https://cdn.jsdelivr.net/npm/marked@15.0.8/+esm'</script>
   <!-- CSS + ICONS -->
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -22,6 +24,7 @@
   <!-- JAVASCRIPT -->
   <script type="module" src="js/firebase.js"></script>
   <script type="module" src="js/authGuard.js"></script>
+  <script type="module" src="js/addToCart.js"></script> <!-- add to cart functionality -->
   <script type="module" src="js/listingPost.js"></script> <!-- automatically populate listings -->  
   <script type="module" src="js/countdown.js"></script> <!-- countdown the days till the market -->
 </head>
@@ -88,6 +91,10 @@
       </p>
       <h1 id="product-name" class="product-name animate__animated animate__slideInDown">Product Name</h1>
       <h2 id="price" class="price animate__animated animate__slideInDown">$0.00</h2>
+
+      <div class="tags" id="product-tags">
+        <!-- will be automagically populated-->
+      </div>
 
       <p id="product-description" class="product-description animate__animated animate__fadeIn">
           Product description goes here.

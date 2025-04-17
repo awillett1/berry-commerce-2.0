@@ -6,6 +6,9 @@ import { getDatabase, ref, set, get } from 'https://www.gstatic.com/firebasejs/1
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
+import { marked } from 'https://cdn.jsdelivr.net/npm/marked@latest/lib/marked.esm.js';
+import DOMPurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.2.5/+esm';
+
 // firebase stuff
 const db = getDatabase();
 const auth = getAuth();
@@ -62,11 +65,11 @@ async function submitForm(e, userId) {
     let existingData = snapshot.exists() ? snapshot.val() : {};
 
     // get form values, or use existing data if fields are left blank
-    const businessName = getInputVal('business-name') || existingData.businessName;
-    const businessEmail = getInputVal('business-email') || existingData.businessEmail;
-    const businessDescription = getInputVal('business-description') || existingData.businessDescription;
-    const instagram = getInputVal('instagramHandle') || existingData.instagram;
-    const facebook = getInputVal('facebookHandle') || existingData.facebook;
+    const businessName = sanitizeInput(getInputVal('business-name') || existingData.businessName);
+    const businessEmail = sanitizeInput(getInputVal('business-email') || existingData.businessEmail);
+    const businessDescription = sanitizeInput(getInputVal('business-description') || existingData.businessDescription);
+    const instagram = sanitizeInput(getInputVal('instagramHandle') || existingData.instagram);
+    const facebook = sanitizeInput(getInputVal('facebookHandle') || existingData.facebook);
     const timestamp = new Date().toISOString();
 
     // photo stuff
@@ -132,4 +135,9 @@ function saveSellerInfo(userId, businessName, businessEmail, businessDescription
     }).catch((error) => {
         console.error('Error updating profile:', error);
     });
+}
+
+// sanitize input using DOMPurify
+function sanitizeInput(input) {
+    return DOMPurify.sanitize(input);
 }
