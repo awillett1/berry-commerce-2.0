@@ -1,46 +1,99 @@
-Sorry one of my commits got attributed to my work GitHub :(
 
-Milestone 1 Completion: 2/24/2025
-- Account creation and login functionality.
-- Account panel features created. (Changing email and password, e.g.)
-- Differentiating between logged in users, sellers, and admins.
-- Prevent users from accessing seller-side information
+# Berry Commerce 2.0
+*Senior Capstone Project*
+--
+This custom-built e-commerce site was created for Berry students, alumni, faculty/staff, and the Rome community to be able to sell, advertise,m and preorder products for the annual Spring Market and Mountain Day market.
 
-Milestone 2 Progress: 3/24/2025
-- Sellers are able to create products
-- Products are posted to main shop (products.html)
-- Each seller has their own individual seller pages
-- Products are posted to individual seller page
+**[Demonstration Slideshow](https://docs.google.com/presentation/d/1kKlaIHqmWc7cev9t4mpjaVt8T86_c9YCgtm46fdT1j4/edit?usp=sharing)**
 
-TO DO:
-- Find an image hosting API for uploading images (e.g. business logos, product image(s) and connect that to the existing FDRB data
-   - Looking into Cloudinary, Imgur...
-- Product editing/deletion for sellers
-- Admin must approve/deny requests for product posting before it is reflected on main page.
+### Overview
+-  Post and promote products and services
+-   Accept pre-orders before live events
+-   Manage orders and listings through seller-specific dashboards
+-   Allow admins to approve and moderate product postings and business pages
 
-Notes:
-- Each business must have their own html page uploaded to the server (I can do this via admin, and since they have to be approved by admin anyway, this works fine.)
+### Development Tools
+- Backend, Hosting, Database
+	- Firebase (Blaze Plan)
+		- Firebase Hosting
+		- Firebase Authentication (email/password)
+		- Realtime Database 
+		- Cloud Firestore
+		- Firebase Mail Extension
+- Media Handling
+	- Currently, Firebase, I plan on moving to Cloudinary
+		- Hosts business logos and product images
+- Security and Formatting
+	- DOMPurify 
+	- Marked - allow markdown in product and seller descriptions
 
-Milestone 2 Completion and Milestone 3 Progress 4/10/2025
-- Image uploading / inserting API handled
-- Images are posted to all products, product listing pages, individual seller pages. (for both products and logo)
-- Admin product approval completion.
-- Business page information is automagically inputted/remembers input if already inputted once
-- Admins can view data for the product, approve, and reject.
+### Main Features
+#### Account and Roles
+-   Email/password registration and login
+-   Roles: Customers (Users), Sellers, Admins
+-   Access to certain portions of the website depends on their role
+#### Product Listings
+-   Sellers can:
+    -   Create, edit, and delete product listings
+    -   Upload product images and business logos
+-   Products appear on:
+    -   Main shop page
+    -   Custom, auto-generated seller/business pages
+-   Admin approval is required for all product listings  
+#### Seller Experience
+-   Business application and onboarding flow
+-   Email notifications for approval/rejection of products
+-   Editable, customizable storefront pages
+-   Markdown-supported product descriptions
+-   Update order status for orders
+#### Customer Experience
+-   Add products to the cart
+-   Preorder products before market events
+-   Filter/search products by category or keyword
+-   Track order status after submission
+#### Admin
+-   Approve/reject product listings and business pages
+-   View full product/seller info
+-   Monitor and manage orders
+   
+----------
 
-TO DO:
-- Product editing
-- Payment API (WIP)
-- Email notification for sellers if product is approved/rejected
-- Business approvals + email notifications
-- Preorder improvements
-- Add to cart functionality
-- Order updating for seller/user (preorder notif)
+### Emails
+-   Triggered on product approval/rejection
+-   Seller updates and order confirmations
+-   Powered by Firebase Mail Extension and Firestore events
 
-Milestone 3 Progress/Completion 4/17/2025
-- Order tables are automagically added
-- Markdown API
-- Sanitized inputs
-- Add to cart functionality
-- Edit and deleting products
-- Email notifications
+### Milestone Overviews
+#### Milestone 1: Account System
+-   User authentication (account creation, login, and logout)
+-   Role-based access: Customers (Users), Sellers, and Admins
+-   Account panel with profile management (change email, password, etc.)
+-   Permissions to restrict access to seller/admin-only areas
+    
+
+#### Milestone 2: Product Management
+-   Sellers can create products with full details and images
+-   Products automatically appear on:
+    -   Main shop page
+    -   Individual seller pages
+-   Admin approval is required for product visibility
+-   Secure image uploads via image hosting API (e.g., Cloudinary)
+-   Business profile pages are automatically generated and managed
+    
+
+####  Milestone 3: Orders, Notifications & UX Improvements
+-   "Add to Cart" functionality and dynamic order tables
+-   Input sanitization for security
+-   Product editing/deleting for sellers
+-   Email notifications for product approval, rejections, and order updates
+-   Admin dashboard to manage and review all listings and users
+-   Markdown support for product descriptions
+-   Preorder and cart features with seller/user updates
+    
+
+###  In Progress / To Do
+-   Payment API integration -> moving to Venmo, etc.
+-   Email system for business approvals
+-   Preorder improvements
+-   Enhanced admin controls
+-   Code clean-up
